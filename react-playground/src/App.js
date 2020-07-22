@@ -3,7 +3,8 @@ import React from 'react';
 import './App.css';
 
 //import CounterButtonApp from './Apps/CounterButton/CounterButtonApp';
-import TimerDisplayApp from './Apps/TimerDisplay/TimerDisplayApp';
+//import TimerDisplayApp from './Apps/TimerDisplay/TimerDisplayApp';
+import GitHubCardApp from './Apps/GitHubCards/GitHubCardApp';
 
 // comment and uncomment out the app components you wish to test with.
 function App() {
@@ -19,7 +20,8 @@ function App() {
     // </div>
 
     // <CounterButtonApp />
-    <TimerDisplayApp />
+    // <TimerDisplayApp />
+    <GitHubCardApp />
   );
 }
 
