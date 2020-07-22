@@ -1,7 +1,9 @@
 import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import CounterButtonApp from './Apps/CounterButton/CounterButtonApp';
+
+//import CounterButtonApp from './Apps/CounterButton/CounterButtonApp';
+import TimerDisplayApp from './Apps/TimerDisplay/TimerDisplayApp';
 
 // comment and uncomment out the app components you wish to test with.
 function App() {
@@ -16,7 +18,8 @@ function App() {
     //   </header>
     // </div>
 
-    <CounterButtonApp />
+    // <CounterButtonApp />
+    <TimerDisplayApp />
   );
 }
 
