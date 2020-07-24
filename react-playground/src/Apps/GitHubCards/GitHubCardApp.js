@@ -12,12 +12,23 @@ const testData =
 
 class GitHubCardApp extends React.Component
 {
+    constructor(props)
+    {
+        super(props); //<-- ??
+
+        this.state =
+        {
+            Profiles: testData
+        };
+    }
+
     render()
     {
         return(
             <div>
                 <h2 className="pt-5 text-center">The GitHub Cards App</h2>
-                <CardList />
+                <Form />
+                <CardList Profiles={this.state.Profiles} />
             </div>
         );
     }
@@ -33,7 +44,7 @@ class CardList extends React.Component
         return (<div>
                     <Card Profile={testData[0]} />
                     <Card2 {...testData[1]} />
-                    {testData.map(profile => <Card2 {...profile} />)}
+                    {this.props.Profiles.map(profile => <Card2 {...profile} />)}
                 </div>);
     }
 }
@@ -70,4 +81,49 @@ class Card2 extends React.Component
             </div>);
     }
 }
+
+class Form extends React.Component
+{
+    HandleSubmit = (event) =>
+    {
+        event.preventDefault();
+        console.log(this.state.UserName);
+    };
+
+    //UserNameInput = React.createRef();
+    // this.state =
+    // {
+    //     UserName: ""
+    // };
+
+    // https://app.pluralsight.com/course-player?clipId=43aac0ac-3fe2-43fa-a70e-bb86cc955351
+    // 5:00
+
+    constructor()
+    {
+        super();
+
+        this.state =
+        {
+            UserName: ""
+        };
+    }
+
+    render()
+    {
+        return(
+            <form action="" onSubmit={this.HandleSubmit}>
+                <input
+                    placeholder="GitHub UserName"
+                    value={this.state.UserName}
+                    onChange={event => {this.setState( {UserName: event.target.value} )} }
+                    //ref={this.UserNameInput}
+                    required></input>
+                <button>Add Card</button>
+            </form>
+        );
+    }
+}
+
+
 export default GitHubCardApp;
