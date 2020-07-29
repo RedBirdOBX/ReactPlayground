@@ -4,7 +4,9 @@ import './App.css';
 
 //import CounterButtonApp from './Apps/CounterButton/CounterButtonApp';
 //import TimerDisplayApp from './Apps/TimerDisplay/TimerDisplayApp';
-import GitHubCardApp from './Apps/GitHubCards/GitHubCardApp';
+//import GitHubCardApp from './Apps/GitHubCards/GitHubCardApp';
+import CaptureInputValueApp from './Apps/CapturingInputValue/CaptureInputValueApp';
+
 
 // comment and uncomment out the app components you wish to test with.
 function App() {
@@ -21,7 +23,8 @@ function App() {
 
     // <CounterButtonApp />
     // <TimerDisplayApp />
-    <GitHubCardApp />
+    // <GitHubCardApp />
+    <CaptureInputValueApp />
   );
 }
 

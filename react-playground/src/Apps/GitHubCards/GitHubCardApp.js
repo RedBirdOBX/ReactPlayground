@@ -96,9 +96,6 @@ class Form extends React.Component
     //     UserName: ""
     // };
 
-    // https://app.pluralsight.com/course-player?clipId=43aac0ac-3fe2-43fa-a70e-bb86cc955351
-    // 5:00
-
     constructor()
     {
         super();
@@ -116,7 +113,12 @@ class Form extends React.Component
                 <input
                     placeholder="GitHub UserName"
                     value={this.state.UserName}
-                    onChange={event => {this.setState( {UserName: event.target.value} )} }
+                    onChange={event =>
+                        {
+                            this.setState( {UserName: event.target.value} );
+                            console.log(event.target.value);
+                        }
+                    }
                     //ref={this.UserNameInput}
                     required></input>
                 <button>Add Card</button>
