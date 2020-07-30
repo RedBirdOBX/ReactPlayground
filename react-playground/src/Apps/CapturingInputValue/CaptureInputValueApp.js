@@ -1,7 +1,5 @@
 import React from 'react';
 
-// https://app.pluralsight.com/course-player?clipId=43aac0ac-3fe2-43fa-a70e-bb86cc955351
-// start at 6:00
 class CaptureInputValueApp extends React.Component
 {
     render()
