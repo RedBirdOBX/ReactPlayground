@@ -7,7 +7,7 @@
 
  .github-profile img
  {
-     width: 75px;
+     width: 125px;
  }
 
 .github-profile .info
@@ -20,6 +20,12 @@
  {
     font-size: 1.25rem;
     font-weight: bold;
+}
+
+.github-profile .txt
+ {
+    font-size: 1.0rem;
+    font-weight: normal;
 }
 
 form {

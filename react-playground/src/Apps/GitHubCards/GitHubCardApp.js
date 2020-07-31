@@ -1,17 +1,16 @@
 import React from 'react';
+import Header from './Components/Header';
+import Form from './Components/Form';
+import CardList from './Components/CardList';
 
 // NOTES:
 // This app has two state objects.
-
-
-// https://api.github.com/users/redbirdobx
-const testData =
-[
-    {name: "Dan Abramov", avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4", company: "@facebook"},
-    {name: "Sophie Alpert", avatar_url: "https://avatars2.githubusercontent.com/u/6820?v=4", company: "Humu"},
-    {name: "Sebastian Markbåge", avatar_url: "https://avatars2.githubusercontent.com/u/63648?v=4", company: "Facebook"},
-];
-
+// The app has a state ob called Profiles.  It passes this down to the CardList component and is used by the ProfileCard.
+// Whenever the form submits a new GitHub profile, calls the AddnewProfile method in the App and updates the state.
+//
+// The form also uses state and has a prop called UserName. It starts off empty and with each change event in the form
+// input, it updates the form's state 'UserName'.  We do this in case we needed to apply validation rules against the current
+// value.  Eventually, the UserName is populated with GitHub data and sent back up to the app level.
 
 
 class GitHubCardApp extends React.Component
@@ -21,168 +20,88 @@ class GitHubCardApp extends React.Component
         super(props);
         this.state =
         {
-            Profiles: testData
+            Profiles: this.GetDefaultProfiles()
         };
+    }
+
+    GetDefaultProfiles = () =>
+    {
+        let results = [];
+
+        //https://api.github.com/users/redbirdobx
+        let defaultProfile =
+        {
+            "login": "RedBirdOBX",
+            "id": 11718655,
+            "node_id": "MDQ6VXNlcjExNzE4NjU1",
+            "avatar_url": "https://avatars1.githubusercontent.com/u/11718655?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/RedBirdOBX",
+            "html_url": "https://github.com/RedBirdOBX",
+            "followers_url": "https://api.github.com/users/RedBirdOBX/followers",
+            "following_url": "https://api.github.com/users/RedBirdOBX/following{/other_user}",
+            "gists_url": "https://api.github.com/users/RedBirdOBX/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/RedBirdOBX/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/RedBirdOBX/subscriptions",
+            "organizations_url": "https://api.github.com/users/RedBirdOBX/orgs",
+            "repos_url": "https://api.github.com/users/RedBirdOBX/repos",
+            "events_url": "https://api.github.com/users/RedBirdOBX/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/RedBirdOBX/received_events",
+            "type": "User",
+            "site_admin": false,
+            "name": "Shane Fowlkes",
+            "company": "Cedar Fair Entertainment, Self",
+            "blog": "",
+            "location": "Richmond VA",
+            "email": null,
+            "hireable": null,
+            "bio": "20+ years in development.  Senior Software, Full Stack Developer. DevOps Manager. Release Manager. Team Lead. Janitor.",
+            "twitter_username": null,
+            "public_repos": 5,
+            "public_gists": 0,
+            "followers": 0,
+            "following": 1,
+            "created_at": "2015-03-30T11:10:54Z",
+            "updated_at": "2020-07-27T19:41:14Z"
+        };
+
+        results.push(defaultProfile);
+        return results;
     }
 
     AddNewProfile = (profile) =>
     {
-        console.log(profile);
-
-        // adding to Profiles state obj
-        let currentProfiles = this.state.Profiles;
-
-        // before: console.dir(currentProfiles);
-        currentProfiles.push(profile);
-
-        let newProfiles = currentProfiles;
-        // after: console.dir(newProfiles);
-
-        this.setState({ Profiles: newProfiles });
+        // approach 1
+        // // adding to Profiles state obj
+        // let currentProfiles = this.state.Profiles;
+        // // before: console.dir(currentProfiles);
+        // currentProfiles.push(profile);
+        // let newProfiles = currentProfiles;
+        // this.setState({ Profiles: newProfiles });
 
         // approach #2 - use concat
+        // fix this:  https://dsf-js-playground.azurewebsites.net/Javascript/Arrays/Concat
+        // let newProfiles = [];
+        // newProfiles.push(profile);
+        // newProfiles = newProfiles.concat(this.state.Profiles);
+        // this.setState({ Profiles: newProfiles });
 
         // approach #3 - more advanced approach
         // prevState will give you access to the previous state
         // what it returns is the NEW state..so we say Profiles is the old state...spread...and add the new element to the array!
-        //this.setState(prevState => ({ Profiles: [...prevState.Profiles, profileData] }));
+        this.setState(prevState => ({ Profiles: [...prevState.Profiles, profile] }));
     };
 
     render()
     {
         return(
             <div>
-                <h2 className="pt-5 text-center">The GitHub Cards App</h2>
+                <Header Title={"The GitHub Profiles App"} />
                 <Form OnSubmitRef={this.AddNewProfile} />
                 <CardList Profiles={this.state.Profiles} />
             </div>
         );
     }
 }
-
-class CardList extends React.Component
-{
-
-    // will contain many cards
-
-    // why isn't key working?
-    // https://app.pluralsight.com/course-player?clipId=8f583202-ceab-46d0-bba8-482f0401e6a1
-    // 7:00 ?
-
-    render()
-    {
-        return (<div>
-                    {/* <Card Profile={testData[0]} />
-                    <Card2 {...testData[1]} /> */}
-                    {this.props.Profiles.map(profile => <Card2 key={profile.id} {...profile} />)}
-                </div>);
-    }
-}
-
-class Card extends React.Component
-{
-    render()
-    {
-        return (
-        <div className="github-profile">
-            <img src={this.props.Profile.avatar_url} />
-            <div className="info">
-                <div className="name">{this.props.Profile.name}</div>
-                <div className="copmany">{this.props.Profile.company}</div>
-            </div>
-        </div>);
-    }
-}
-
-class Card2 extends React.Component
-{
-    // here's an alternate way of doing this.  We spread 'testData[1]' as props properties.
-    // all the properties within testData[1] become properties sent to the component.
-    // we then can just pick them up as this.props.{prop name of object}.
-    render()
-    {
-        return (
-            <div className="github-profile">
-                <img src={this.props.avatar_url} />
-                <div className="info">
-                    <div className="name">{this.props.name}</div>
-                    <div className="company">{this.props.company}</div>
-                    <div className="company">{this.props.key}</div>
-                </div>
-            </div>);
-    }
-}
-
-class Form extends React.Component
-{
-    constructor()
-    {
-        super();
-
-        this.state =
-        {
-            UserName: ""
-        };
-    }
-
-    HandleSubmit = async (event) =>
-    {
-        event.preventDefault();
-        console.log(this.state.UserName);
-
-        let apiUrl = `https://api.github.com/users/${this.state.UserName}`;
-        let githubResponse = await fetch(apiUrl);
-        let jsonResponse = await githubResponse.json();
-
-        console.dir(jsonResponse);
-
-        // handle possible errors
-        // '.message' will only be present if user is not found
-        if (jsonResponse.message !== undefined) {
-            if (jsonResponse.message.toLowerCase() === "not found") {
-                console.error(`User not found at ${apiUrl}`);
-                //alert(`User not found at ${apiUrl}`);
-            }
-            else {
-                console.error(jsonResponse.message);
-                alert(jsonResponse.message);
-            }
-        }
-
-        // if username is found
-        if (jsonResponse.name !== undefined) {
-            // we need to update the app's state 'Profiles', not the testData array.
-            //testData.push(jsonResponse);
-            this.props.OnSubmitRef(jsonResponse);
-
-            // reset input after successfull add
-            this.setState({ UserName: "" });
-
-        }
-        console.dir(testData);
-
-
-    };
-
-    render()
-    {
-        return(
-            <form action="" onSubmit={this.HandleSubmit}>
-                <input
-                    placeholder="GitHub UserName"
-                    value={this.state.UserName}
-                    onChange={event =>
-                        {
-                            this.setState( { UserName: event.target.value } );
-                            //console.log(event.target.value);
-                        }
-                    }
-                    required></input>
-                <button>Add Card</button>
-            </form>
-        );
-    }
-}
-
 
 export default GitHubCardApp;
