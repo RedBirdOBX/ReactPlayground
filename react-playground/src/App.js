@@ -4,7 +4,8 @@ import './App.css';
 
 //import CounterButtonApp from './Apps/CounterButton/CounterButtonApp';
 //import TimerDisplayApp from './Apps/TimerDisplay/TimerDisplayApp';
-import GitHubCardApp from './Apps/GitHubCards/GitHubCardApp';
+//import GitHubCardApp from './Apps/GitHubCards/GitHubCardApp';
+import LoopImages from './Apps/LoopImages/LoopImages';
 //import CaptureInputValueApp from './Apps/CapturingInputValue/CaptureInputValueApp';
 
 
@@ -23,8 +24,9 @@ function App() {
 
     // <CounterButtonApp />
     // <TimerDisplayApp />
-    <GitHubCardApp />
+    // <GitHubCardApp />
     // <CaptureInputValueApp />
+    <LoopImages />
   );
 }
 
