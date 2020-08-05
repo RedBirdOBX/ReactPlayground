@@ -5,7 +5,7 @@
 //  4) Use Class Components for one version and Function Components for another.
 
 import React from 'react';
-import Buttons from './Components/Buttons';
+import ButtonLists from './Components/ButtonList';
 
 class ColorChanger extends React.Component
 {
@@ -25,7 +25,7 @@ class ColorChanger extends React.Component
         return (
             <div className="row">
                 <div className="col-12 text-center">
-                    <Buttons />
+                    <ButtonLists />
                 </div>
             </div>
         );

@@ -9,7 +9,7 @@ let buttons = buttonTypes.map(BuildButton);
 
 
 
-class Buttons extends React.Component
+class ButtonList extends React.Component
 {
     // HandleButtonClick = () =>
     // {
@@ -27,11 +27,10 @@ class Buttons extends React.Component
 
 
 
-
     render()
     {
         return (<div>{buttons}</div>);
     }
 }
 
-export default Buttons;
+export default ButtonList;
