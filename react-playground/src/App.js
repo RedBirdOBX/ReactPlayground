@@ -5,9 +5,9 @@ import './App.css';
 //import CounterButtonApp from './Apps/CounterButton/CounterButtonApp';
 //import TimerDisplayApp from './Apps/TimerDisplay/TimerDisplayApp';
 //import GitHubCardApp from './Apps/GitHubCards/GitHubCardApp';
-import LoopImages from './Apps/LoopImages/LoopImages';
+//import LoopImages from './Apps/LoopImages/LoopImages';
 //import CaptureInputValueApp from './Apps/CapturingInputValue/CaptureInputValueApp';
-
+import ColorChanger from './Apps/ColorChanger/ColorChanger';
 
 // comment and uncomment out the app components you wish to test with.
 function App() {
@@ -26,7 +26,8 @@ function App() {
     // <TimerDisplayApp />
     // <GitHubCardApp />
     // <CaptureInputValueApp />
-    <LoopImages />
+    //<LoopImages />
+    <ColorChanger />
   );
 }
 
