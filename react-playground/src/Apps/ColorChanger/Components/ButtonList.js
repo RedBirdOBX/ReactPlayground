@@ -19,37 +19,16 @@ function ButtonConfig (name, style)
     this.ButtonStyle = style;
 };
 
-console.dir(buttonConfigs);
-
-//let buttons = buttonTypes.map(BuildButton);
-
-
 
 class ButtonList extends React.Component
 {
-    // HandleButtonClick = () =>
-    // {
-    //     this.props.OnClickHandler(this.props.Incrementor);
-    // };
-
-/* <button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button> */
-
-
-
     render()
     {
         return (
         <div>
 
             {
-                    buttonConfigs.map(config => <Button key={config.ButtonName} ButtonConfig={config} />)
+                buttonConfigs.map(config => <Button BtnClickEvent={this.props.ClickHanderProp} key={config.ButtonName} ButtonConfig={config} />)
             }
 
         </div>);
