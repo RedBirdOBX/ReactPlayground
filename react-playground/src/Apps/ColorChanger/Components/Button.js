@@ -5,17 +5,15 @@ class Button extends React.Component {
 
     HandleButtonClick = () =>
     {
-        //this.props.TrueButtonClickHandler("hello");
-        console.dir(this.props);
+        this.props.BtnClickEvent(this.props.ButtonConfig.ButtonName);
     };
-
     
     render() 
     {
         return (
         <span>
-                <button className={this.props.ButtonConfig.ButtonStyle} 
-                    onClick={this.HandleButtonClick}>
+                <button 
+                    onClick={this.HandleButtonClick} className={this.props.ButtonConfig.ButtonStyle} >
                     {this.props.ButtonConfig.ButtonName}
                 </button>
         </span>);

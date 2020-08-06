@@ -19,19 +19,18 @@ function ButtonConfig (name, style)
     this.ButtonStyle = style;
 };
 
-
 class ButtonList extends React.Component
 {
     render()
     {
-        return (
-        <div>
-
-            {
-                buttonConfigs.map(config => <Button BtnClickEvent={this.props.ClickHanderProp} key={config.ButtonName} ButtonConfig={config} />)
-            }
-
-        </div>);
+        return (<div>
+                    { buttonConfigs.map(config => 
+                        <Button 
+                            BtnClickEvent={this.props.ClickHandler} 
+                            key={config.ButtonName} 
+                            ButtonConfig={config} />)
+                    }
+                </div>);
     }
 }
 
