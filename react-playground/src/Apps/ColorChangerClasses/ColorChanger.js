@@ -3,10 +3,9 @@
 
 import React from 'react';
 import ButtonLists from './Components/ButtonList';
-import Button from './Components/Button';
 import Alert from './Components/Alert';
 
-function AlertConfig(name, style, msg) 
+function AlertConfig(name, style, msg)
 {
     this.AlertName = name;
     this.AlertStyle = style;
@@ -18,7 +17,7 @@ const defaultAlertConfig = new AlertConfig("Primary", "alert alert-primary", "Cl
 
 class ColorChanger extends React.Component
 {
-    constructor() 
+    constructor()
     {
         super();
         this.state =
@@ -29,13 +28,13 @@ class ColorChanger extends React.Component
 
     UpdateAlertState = (btnName) =>
     {
-        this.setState( { AlertConfig: 
+        this.setState( { AlertConfig:
                                     {
                                         "AlertName":  btnName,
                                         "AlertStyle": `alert alert-${btnName.toLowerCase()}`,
                                         "Message": `You have selected the ${btnName} button.`
-                                    } 
-                        } 
+                                    }
+                        }
                     );
     };
 
@@ -44,7 +43,7 @@ class ColorChanger extends React.Component
             <div>
                 <div className="row my-5">
                     <div className="col-12 text-center">
-                        <ButtonLists ClickHandler={this.UpdateAlertState} /> 
+                        <ButtonLists ClickHandler={this.UpdateAlertState} />
                     </div>
                 </div>
                 <div className="row my-5">

@@ -7,7 +7,8 @@ import './App.css';
 //import GitHubCardApp from './Apps/GitHubCards/GitHubCardApp';
 //import LoopImages from './Apps/LoopImages/LoopImages';
 //import CaptureInputValueApp from './Apps/CapturingInputValue/CaptureInputValueApp';
-import ColorChanger from './Apps/ColorChanger/ColorChanger';
+//import ColorChanger from './Apps/ColorChangerClasses/ColorChanger';
+import ColorChanger from './Apps/ColorChangerFunctions/ColorChanger';
 
 // comment and uncomment out the app components you wish to test with.
 function App() {
