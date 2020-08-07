@@ -4,7 +4,7 @@ const Button = (props) =>
 {
     return (<span>
                 <button
-                    //onClick={this.HandleButtonClick}
+                    onClick={() => props.BtnClickEvent(props.ButtonConfig)}
                     className={props.ButtonConfig.ButtonStyle}
                     >
                     {props.ButtonConfig.ButtonName}

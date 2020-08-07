@@ -1,8 +1,10 @@
 import React from 'react';
+import {useState} from 'react';
 import ButtonLists from "./Components/ButtonList";
 import Alert from "./Components/Alert";
 
-function AlertConfig(name, style, msg) {
+function AlertConfig(name, style, msg) 
+{
     this.AlertName = name;
     this.AlertStyle = style;
     this.Message = msg;
@@ -13,22 +15,23 @@ const defaultAlertConfig = new AlertConfig("Primary", "alert alert-primary", "Cl
 
 const ColorChanger = (props) =>
 {
-    
-
-    const [counter, setCounter] = useState(0);
+    const [alertConfig, setAlertConfig] = useState(defaultAlertConfig);
+    const UpdateAlertState = (btnConfig) => 
+    {
+        let newAlertConfig = new AlertConfig(btnConfig.ButtonName, `alert alert-${btnConfig.ButtonName.toLowerCase()}`, `You have selected the ${btnConfig.ButtonName} button`);
+        setAlertConfig(newAlertConfig);
+    };
 
     return(
         <div>
             <div className="row my-5">
                 <div className="col-12 text-center">
-                    {/* <ButtonLists ClickHandler={this.UpdateAlertState} /> */}
-                    <ButtonLists />
+                    <ButtonLists ClickHandler={UpdateAlertState} />
                 </div>
             </div>
             <div className="row my-5">
                 <div className="col-12 text-center">
-                    {/* <Alert Config={this.state.AlertConfig} /> */}
-                    <Alert />
+                    <Alert Config={alertConfig} />
                 </div>
             </div>
         </div>

@@ -1,12 +1,11 @@
 import React from 'react';
 
-const Alert = () =>
+const Alert = (props) =>
 {
     return (<div
-                //className={this.props.Config.AlertStyle}
+                className={props.Config.AlertStyle}
                 role="alert">
-                {/* {this.props.Config.Message} */}
-                alert
+                {props.Config.Message}
             </div>);
 };
 

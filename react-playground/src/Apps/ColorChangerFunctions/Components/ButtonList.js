@@ -13,20 +13,18 @@ let darkBtn = new ButtonConfig("Dark", "btn btn-lg btn-dark");
 let buttonConfigs = [];
 buttonConfigs.push(primaryBtn, secondaryBtn, successBtn, dangerBtn, warningBtn, infoBtn, lightBtn, darkBtn);
 
-function ButtonConfig(name, style) {
+function ButtonConfig(name, style) 
+{
     this.ButtonName = name;
     this.ButtonStyle = style;
 };
 
-
-
-const ButtonList = () =>
+const ButtonList = (props) =>
 {
-
     return (<div>
                 {buttonConfigs.map(config =>
                     <Button
-                        //BtnClickEvent={this.props.ClickHandler}
+                        BtnClickEvent={props.ClickHandler}
                         key={config.ButtonName}
                         ButtonConfig={config} />)
                 }
