@@ -8,7 +8,8 @@ import './App.css';
 //import LoopImages from './Apps/LoopImages/LoopImages';
 //import CaptureInputValueApp from './Apps/CapturingInputValue/CaptureInputValueApp';
 //import ColorChanger from './Apps/ColorChangerClasses/ColorChanger';
-import ColorChanger from './Apps/ColorChangerFunctions/ColorChanger';
+//import ColorChanger from './Apps/ColorChangerFunctions/ColorChanger';
+import TicTacToeGame from './Apps/TicTacToe/TicTacToeGame';
 
 // comment and uncomment out the app components you wish to test with.
 function App() {
@@ -28,7 +29,8 @@ function App() {
     // <GitHubCardApp />
     // <CaptureInputValueApp />
     //<LoopImages />
-    <ColorChanger />
+    //<ColorChanger />
+    <TicTacToeGame />
   );
 }
 
