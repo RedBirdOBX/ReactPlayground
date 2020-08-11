@@ -12,7 +12,8 @@ const Alert = (props) =>
 
     return (<div
                 className={props.Config.AlertStyle}
-                role="alert">
+                role="alert"
+                style={{ fontSize: (props.Config.AlertName === "Danger") ? "36px" : "16px" }}>
                 {props.Config.Message}
             </div>);
 };
