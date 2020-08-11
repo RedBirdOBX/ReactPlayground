@@ -3,7 +3,10 @@ import {useState} from 'react';
 import ButtonLists from "./Components/ButtonList";
 import Alert from "./Components/Alert";
 
-function AlertConfig(name, style, msg) 
+// to do: useReact to conditionally update styles...
+// prove a unmount and remount action
+
+function AlertConfig(name, style, msg)
 {
     this.AlertName = name;
     this.AlertStyle = style;
@@ -16,7 +19,7 @@ const defaultAlertConfig = new AlertConfig("Primary", "alert alert-primary", "Cl
 const ColorChanger = (props) =>
 {
     const [alertConfig, setAlertConfig] = useState(defaultAlertConfig);
-    const UpdateAlertState = (btnConfig) => 
+    const UpdateAlertState = (btnConfig) =>
     {
         let newAlertConfig = new AlertConfig(btnConfig.ButtonName, `alert alert-${btnConfig.ButtonName.toLowerCase()}`, `You have selected the ${btnConfig.ButtonName} button`);
         setAlertConfig(newAlertConfig);
