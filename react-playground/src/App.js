@@ -11,7 +11,8 @@ import './App.css';
 //import ColorChanger from './Apps/ColorChangerFunctions/ColorChanger';
 //import TicTacToeGame from './Apps/TicTacToe/TicTacToeGame';
 //import AuthorQuiz from './Apps/AuthorQuiz/AuthorQuiz';
-import PropsValidationApp from './Apps/PropsValidation/PropsValidationApp';
+//import PropsValidationApp from './Apps/PropsValidation/PropsValidationApp';
+import TestExampleApp from './Apps/TestComponentExample/TestExampleApp';
 
 // comment and uncomment out the app components you wish to test with.
 function App() {
@@ -34,7 +35,8 @@ function App() {
     //<ColorChanger />
     //<TicTacToeGame />
     //<AuthorQuiz />
-    <PropsValidationApp />
+    // <PropsValidationApp />
+    <TestExampleApp />
   );
 }
 
