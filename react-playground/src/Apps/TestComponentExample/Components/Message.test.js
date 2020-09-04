@@ -1,10 +1,5 @@
-import React from 'react';
-
-const Message = (props) => {
-    return (
-        <div>{props.Greeting}. I have ${props.Pocket1 + props.Pocket2}.</div>
-    );
-};
+// import the component you wish to test
+import Message from './Message';
 
 describe("When setting up testing", () =>
 {
