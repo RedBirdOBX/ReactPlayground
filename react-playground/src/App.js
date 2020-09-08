@@ -27,16 +27,16 @@ function App() {
     //   </header>
     // </div>
 
-    // <CounterButtonApp />
-    // <TimerDisplayApp />
-    // <GitHubCardApp />
-    // <CaptureInputValueApp />
+    //<CounterButtonApp />
+    //<TimerDisplayApp />
+    //<GitHubCardApp />
+    //<CaptureInputValueApp />
     //<LoopImages />
     //<ColorChanger />
     //<TicTacToeGame />
-    //<AuthorQuiz />
-    // <PropsValidationApp />
-    <TestExampleApp />
+    <AuthorQuiz />
+    //<PropsValidationApp />
+    //<TestExampleApp />
   );
 }
 

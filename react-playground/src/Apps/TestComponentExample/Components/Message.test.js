@@ -11,7 +11,7 @@ describe("When setting up testing", () =>
         result = Message({ Greeting: "This is a test", Pocket1: 1, Pocket2: 2 });
     });
 
-    // basic example
+    // basic examples
     it("should fail", () =>
     {
         expect(1+1).toBe(2);
