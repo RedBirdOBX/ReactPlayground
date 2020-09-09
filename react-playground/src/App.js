@@ -12,7 +12,9 @@ import './App.css';
 //import TicTacToeGame from './Apps/TicTacToe/TicTacToeGame';
 //import AuthorQuiz from './Apps/AuthorQuiz/AuthorQuiz';
 //import PropsValidationApp from './Apps/PropsValidation/PropsValidationApp';
-import TestExampleApp from './Apps/TestComponentExample/TestExampleApp';
+//import TestExampleApp from './Apps/TestComponentExample/TestExampleApp';
+//import EventExampleApp from './Apps/EventExample/EventExampleApp';
+import MultiButtonsApp from './Apps/MultiButtons/MultiButtonsApp';
 
 // comment and uncomment out the app components you wish to test with.
 function App() {
@@ -34,9 +36,11 @@ function App() {
     //<LoopImages />
     //<ColorChanger />
     //<TicTacToeGame />
-    <AuthorQuiz />
+    //<AuthorQuiz />
     //<PropsValidationApp />
     //<TestExampleApp />
+    //<EventExampleApp />
+    <MultiButtonsApp NumberOfButtons={5} />
   );
 }
 
