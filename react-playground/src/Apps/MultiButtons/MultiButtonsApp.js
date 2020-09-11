@@ -16,7 +16,7 @@ const MultiButtonsApp = (props) =>
         setSelectedMsg(`You clicked button ${btnNum}.`);
 
         // same problem as before! why the delay?
-        console.log(selectedMsg);
+        console.log("state: " + selectedMsg);
     };
 
     return (
@@ -28,7 +28,7 @@ const MultiButtonsApp = (props) =>
             </div>
             <div className="row my-5">
                 <div className="col-12 text-center">
-                    <Display Message={defaultMsg} />
+                    <Display Message={selectedMsg} />
                 </div>
             </div>
         </div>
