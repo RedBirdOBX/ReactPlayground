@@ -1,6 +1,3 @@
-// https://app.pluralsight.com/course-player?clipId=c2ed0f02-6868-49e7-b31e-897dc2b67f8c
-
-
 import React, { useState } from 'react';
 import ButtonList from './Components/ButtonList'
 import Display from './Components/Display'

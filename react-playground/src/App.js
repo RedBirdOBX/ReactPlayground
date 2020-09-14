@@ -14,7 +14,8 @@ import './App.css';
 //import PropsValidationApp from './Apps/PropsValidation/PropsValidationApp';
 //import TestExampleApp from './Apps/TestComponentExample/TestExampleApp';
 //import EventExampleApp from './Apps/EventExample/EventExampleApp';
-import MultiButtonsApp from './Apps/MultiButtons/MultiButtonsApp';
+//import MultiButtonsApp from './Apps/MultiButtons/MultiButtonsApp';
+import PropsChildrenExampleApp from './Apps/PropsChildrenExample/PropsChildrenExampleApp';
 
 // comment and uncomment out the app components you wish to test with.
 function App() {
@@ -40,7 +41,8 @@ function App() {
     //<PropsValidationApp />
     //<TestExampleApp />
     //<EventExampleApp />
-    <MultiButtonsApp NumberOfButtons={5} />
+    //<MultiButtonsApp NumberOfButtons={5} />
+    <PropsChildrenExampleApp />
   );
 }
 
