@@ -10,12 +10,12 @@ import './App.css';
 //import ColorChanger from './Apps/ColorChangerClasses/ColorChanger';
 //import ColorChanger from './Apps/ColorChangerFunctions/ColorChanger';
 //import TicTacToeGame from './Apps/TicTacToe/TicTacToeGame';
-//import AuthorQuiz from './Apps/AuthorQuiz/AuthorQuiz';
+import AuthorQuiz from './Apps/AuthorQuiz/AuthorQuiz';
 //import PropsValidationApp from './Apps/PropsValidation/PropsValidationApp';
 //import TestExampleApp from './Apps/TestComponentExample/TestExampleApp';
 //import EventExampleApp from './Apps/EventExample/EventExampleApp';
 //import MultiButtonsApp from './Apps/MultiButtons/MultiButtonsApp';
-import PropsChildrenExampleApp from './Apps/PropsChildrenExample/PropsChildrenExampleApp';
+//import PropsChildrenExampleApp from './Apps/PropsChildrenExample/PropsChildrenExampleApp';
 
 // comment and uncomment out the app components you wish to test with.
 function App() {
@@ -37,12 +37,12 @@ function App() {
     //<LoopImages />
     //<ColorChanger />
     //<TicTacToeGame />
-    //<AuthorQuiz />
+    <AuthorQuiz />
     //<PropsValidationApp />
     //<TestExampleApp />
     //<EventExampleApp />
     //<MultiButtonsApp NumberOfButtons={5} />
-    <PropsChildrenExampleApp />
+    //<PropsChildrenExampleApp />
   );
 }
 
