@@ -104,3 +104,8 @@ ol, ul {
     max-height: 100%;
     max-width: 100%;
 }
+
+.answer:hover
+{
+    background-color: #eeeeee;
+}
