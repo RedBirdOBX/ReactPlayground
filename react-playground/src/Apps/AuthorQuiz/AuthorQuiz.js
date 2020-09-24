@@ -1,13 +1,15 @@
 import React from 'react';
+import {shuffle, sample} from 'underscore';
 
-
+//outside of react?
+let books = [];
 const authors =
 [
     {
         name: 'Mark Twain',
         imageUrl: 'Images/Authors/mark-twain.jpg',
         imageSource: 'Wikimedia Commons',
-        books: ['The Adventures of Huckleberry Finn']
+        books: ['The Adventures of Huckleberry Finn', 'Life on the Mississippe']
     },
     {
         name: 'Joseph Conrad',
@@ -19,60 +21,60 @@ const authors =
         name: 'J.K Rowling',
         imageUrl: 'Images/Authors/jk-rowling.jpg',
         imageSource: 'Wikimedia Commons',
-        books: ['Harry Potter and the Sorcerers Stone']
+        books: ['Harry Potter and the Sorcerers Stone','Harry Potter and some other story']
     },
     {
         name: 'Stephen King',
         imageUrl: 'Images/Authors/stephen-king.jpg',
         imageSource: 'Wikimedia Commons',
-        books: ['The Shining', 'It']
+        books: ['The Shining', 'It', 'Carrie']
     },
     {
         name: 'William Shakespeare',
         imageUrl: 'Images/Authors/william-shakespeare.jpg',
         imageSource: 'Wikimedia Commons',
         books: ['Hamlet', 'Macbeth']
-    }
+    },
+    {
+        name: 'Arthur C Clarke',
+        imageUrl: 'Images/Authors/arthur-c-clarke.jpg',
+        imageSource: 'Wikimedia Commons',
+        books: ['2001', 'Rendevous with Rama']
+    },
 ];
 
 
 const GetTurnData = (arg) =>
 {
+    // get a fresh list of all books
+    books = [];
+    authors.forEach((author) => { author.books.forEach((book) => { books.push(book); }); });
+    books = books.sort();
 
-    // What does this function need to do?
-    // Well the first thing it needs to do is select a set of possible answers.
-    // And we'll do that by joining together the lists of books written by all of the authors in our data set,
-    // shuffling them into a random order and then choosing the first four.
-    // I can build the collection of all books in our data set by reducing the authors collection and concatenating
-    // each author's books into the larger set.
-    //use reduce and concat
+    let fourRandomBooks = shuffle(books).slice(0,4);
+    console.dir(fourRandomBooks);
 
+    // write an example using sample
+    // establish the ANSWER - pick one of the 4 random books
+    const answer = sample(fourRandomBooks);
+    console.dir(answer);
 
-    //The next thing I want to do is shuffle that list into a random order,
-    // and that's a little bit more tricky.
-    // So I'll get a little bit of help from an external library by using npm install to install the underscore library.
-    // Now at the top of my script, I can import the shuffle function from underscore.
-    // The value for random books is equal to shuffle all books and then use the slice
-    // method to take the first four elements of the list. Now I'll choose a correct answer from the for random books.
-    // Use the sample function to choose a random value. Sample is also an underscore function.
-    // So I'll add it to the import. Finally, we're nearly ready to return the turn data required by the
-    // turn component which is your recall was a books value and an author value.
-    // Books is easy, you now four random books that we chose. And next we need the author.
-    // The way that we'll get the author is by using the find method of the authors
+    return {
+        books: fourRandomBooks,
+
+        // the author will come from the authors collection where the author has abook title that matches the answer
+        author: authors.find((author) => author.books.some((title) => title === answer))
+    }
 };
 
-//outside of react?
 const state =
 {
     turnData: GetTurnData(authors)
-    // {
-    //     author: authors[1],
-    //     books: authors[1].books
-    // }
 };
+//outside of react?
 
 
-
+// APP ===============================================
 const AuthorQuiz = () =>
 {
     return(
@@ -113,7 +115,7 @@ const Turn = ({author, books}) =>
 const Book = (props) =>
 {
    return (
-           <div className="alert alert-primary">
+           <div className="answer">
                {props.Title}
             </div >
    );

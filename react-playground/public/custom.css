@@ -105,7 +105,17 @@ ol, ul {
     max-width: 100%;
 }
 
+.answer
+{
+    background-color: rgb(233, 233, 233);
+    border-color: #b89d9d;
+    margin-bottom: 20px;
+    padding: 15px 30px 15px 15px;
+    border-left: 5px solid #b89d9d;
+    cursor: pointer;
+}
+
 .answer:hover
 {
-    background-color: #eeeeee;
+    background-color: rgb(228, 204, 204);
 }
