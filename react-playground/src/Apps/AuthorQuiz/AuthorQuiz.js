@@ -5,13 +5,13 @@ import {shuffle, sample} from 'underscore';
 //      redo architecture
 //      use props validation (https://app.pluralsight.com/course-player?clipId=c9d9aa52-a7dc-43d2-9679-9c3054d48efd   9:00)
 
-function TurnData(allBooks, author)
+function TurnData(fourRandomBooks, author)
 {
-    this.AllBooks = allBooks;
+    this.FourRandomBooks = fourRandomBooks;
     this.Author = author;
 }
 
-function Author()
+function Author(name, imgUrl, imgSource, books)
 {
     this.Name = name;
     this.ImageUrl = imgUrl;
@@ -23,56 +23,23 @@ const AuthorQuiz = (highlight) =>
 {
 
     // App Data
-    let books = [];
-    const authors =
-    [
-        {
-            name: 'Mark Twain',
-            imageUrl: 'Images/Authors/mark-twain.jpg',
-            imageSource: 'Wikimedia Commons',
-            books: ['The Adventures of Huckleberry Finn', 'Life on the Mississippi']
-        },
-        {
-            name: 'Joseph Conrad',
-            imageUrl: 'Images/Authors/joseph-conrad.jpg',
-            imageSource: 'Wikimedia Commons',
-            books: ['Heart of Darkness']
-        },
-        {
-            name: 'J.K Rowling',
-            imageUrl: 'Images/Authors/jk-rowling.jpg',
-            imageSource: 'Wikimedia Commons',
-            books: ['Harry Potter and the Sorcerers Stone', 'Harry Potter and some other story']
-        },
-        {
-            name: 'Stephen King',
-            imageUrl: 'Images/Authors/stephen-king.jpg',
-            imageSource: 'Wikimedia Commons',
-            books: ['The Shining', 'It', 'Carrie']
-        },
-        {
-            name: 'William Shakespeare',
-            imageUrl: 'Images/Authors/william-shakespeare.jpg',
-            imageSource: 'Wikimedia Commons',
-            books: ['Hamlet', 'Macbeth']
-        },
-        {
-            name: 'Arthur C Clarke',
-            imageUrl: 'Images/Authors/arthur-c-clarke.jpg',
-            imageSource: 'Wikimedia Commons',
-            books: ['2001', 'Rendevous with Rama']
-        },
-    ];
+    let allBooks = [];
+    let authors = [];
+    let twain = new Author('Mark Twain', 'Images/Authors/mark-twain.jpg', 'Wikimedia Commons', ['The Adventures of Huckleberry Finn', 'Life on the Mississippi']);
+    let conrad = new Author('Joseph Conrad', 'Images/Authors/joseph-conrad.jpg', 'Wikimedia Commons', ['Heart of Darkness']);
+    let rowling = new Author('J.K Rowling', 'Images/Authors/jk-rowling.jpg', 'Wikimedia Commons', ['Harry Potter and the Sorcerers Stone', 'Harry Potter and some other story']);
+    let king = new Author('Stephen King', 'Images/Authors/stephen-king.jpg', 'Wikimedia Commons', ['The Shining', 'It', 'Carrie']);
+    let shakespeare = new Author('William Shakespeare', 'Images/Authors/william-shakespeare.jpg', 'Wikimedia Commons', ['Hamlet', 'Macbeth']);
+    let clarke = new Author('Arthur C Clarke', 'Images/Authors/arthur-c-clarke.jpg', 'Wikimedia Commons', ['2001', 'Rendevous with Rama']);
+    authors.push(twain, conrad, rowling, king, shakespeare, clarke);
 
     // get list of **all** books
-    authors.forEach((author) => { author.books.forEach((book) => { books.push(book); }); });
-    books = books.sort();
-
-    // START HERE
+    authors.forEach((author) => { author.Books.forEach((book) => { allBooks.push(book); }); });
+    allBooks = allBooks.sort();
 
     const GetTurnData = () =>
     {
-        let fourRandomBooks = shuffle(books).slice(0, 4);
+        let fourRandomBooks = shuffle(allBooks).slice(0, 4);
         console.dir(fourRandomBooks);
 
         // write an example using sample
@@ -80,30 +47,35 @@ const AuthorQuiz = (highlight) =>
         const answer = sample(fourRandomBooks);
         console.dir(answer);
 
-        return {
-            books: fourRandomBooks,
+        // the author will come from the authors collection where the author has abook title that matches the answer
+        let turnAuthor = authors.find((author) => author.Books.some((title) => title === answer))
+        let turnData = new TurnData(fourRandomBooks, turnAuthor);
 
-            // the author will come from the authors collection where the author has abook title that matches the answer
-            author: authors.find((author) => author.books.some((title) => title === answer))
-        }
+        return turnData;
     };
 
     // default, starting question data
     const defaultQuestionData = GetTurnData();
 
     // state hooks
+    // set the question data
     const [questionData, SetQuestionData] = useState(defaultQuestionData);
+    const [bgHighlight, SetBgHighlight] = useState("");
 
+
+    // answer == title
     const ValidateAnswer = (answer) =>
     {
-        let isCorrect  = state.turnData.author.books.some((book) => book === answer );
-        state.highlight = isCorrect ? "correct" : "wrong";
+        let isCorrect = questionData.Author.Books.some((book) => book === answer );
+        let newHighlight = isCorrect ? "correct" : "wrong";
+        SetBgHighlight(newHighlight);
     };
 
     return(
     <div className="container-fluid">
         <Hero />
-            <Turn {...state.turnData} highlight={state.highlight} OnAnswerSelected={ValidateAnswer}/>
+            {/* <Turn {...state.turnData} highlight={state.highlight} OnAnswerSelected={ValidateAnswer}/> */}
+            <Turn TurnData={questionData} Highlight={bgHighlight} OnAnswerSelected={ValidateAnswer} />
         <Continue />
         <Footer />
     </div>);
@@ -121,25 +93,29 @@ const Hero = () =>
     );
 };
 
-const Turn = ({author, books, highlight, OnAnswerSelected}) =>
+const Turn = (props) =>
 {
+
+    //props.TurnData
+
+
     const HighlightToBgColor = () =>
     {
         let mapping = { "none": "", "correct": "green", "wrong": "red"};
 
         // this is interesting.  dynamically selecting a property...
-        console.dir(highlight);
-        console.dir(mapping[highlight]);
-        return mapping[highlight];
+        console.dir(props.Highlight);
+        console.dir(mapping[props.Highlight]);
+        return mapping[props.Highlight];
     };
 
    return (
-        <div className="row turn" style={{backgroundColor: HighlightToBgColor(highlight)}}>
+        <div className="row turn" style={{backgroundColor: HighlightToBgColor()}}>
             <div className="col-4 offset-1">
-                <img src={author.imageUrl} className="authorimage" alt="Author" />
+                <img src={props.TurnData.Author.ImageUrl} className="authorimage" alt="Author" />
             </div>
             <div className="col-6">
-                {books.map((title) => <Book Title={title} key={title} ClickHander={OnAnswerSelected} />)}
+               {props.TurnData.FourRandomBooks.map((title) => <Book Title={title} key={title} ClickHander={props.OnAnswerSelected} />)}
             </div>
         </div>
    );
