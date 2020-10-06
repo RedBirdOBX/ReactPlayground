@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {shuffle, sample} from 'underscore';
 import Hero from './Components/Hero';
-//import Turn from './Components/Turn';
+import Turn from './Components/Turn';
 import Continue from './Components/Continue';
 import Footer from './Components/Footer';
 
@@ -62,8 +62,15 @@ const AuthorQuiz = (highlight) =>
     const [questionData, SetQuestionData] = useState(defaultQuestionData);
     const [bgHighlight, SetBgHighlight] = useState("");
 
+    // for testing
+    console.log('All Books:');
+    console.dir(allBooks);
+
+    console.log('Question Data:');
+    console.dir(questionData);
+
     // answer == title
-    const ValidateAnswer = (answer) =>
+    const ValidateAnswerFunction = (answer) =>
     {
         let isCorrect = questionData.Author.Books.some((book) => book === answer );
         let newHighlight = isCorrect ? "correct" : "wrong";
@@ -75,50 +82,11 @@ const AuthorQuiz = (highlight) =>
         <Hero />
             <Turn TurnData={questionData}
                 Highlight={bgHighlight}
-                AnswerSelectedHandler={ValidateAnswer}
+                AnswerHandler={ValidateAnswerFunction}
             />
         <Continue />
         <Footer />
     </div>);
 };
-
-
-
-
-// refactor these...component files already exist.  fails on build
-const Turn = (props) => {
-
-
-    const HighlightToBgColor = () => {
-        let mapping = { "none": "", "correct": "green", "wrong": "red" };
-
-        // this is interesting.  dynamically selecting a property...
-        console.dir(props.Highlight);
-        console.dir(mapping[props.Highlight]);
-        return mapping[props.Highlight];
-    };
-
-    return (
-        <div className="row turn" style={{ backgroundColor: HighlightToBgColor() }}>
-            <div className="col-4 offset-1">
-                <img src={props.TurnData.Author.ImageUrl} className="authorimage" alt="Author" />
-            </div>
-            <div className="col-6">
-                {props.TurnData.FourRandomBooks.map((title) => <Book Title={title} key={title} ClickHander={props.AnswerSelectedHandler} />)}
-            </div>
-        </div>
-    );
-};
-
-const Book = (props) => {
-    return (
-        <div className="answer" onClick={() => { props.ClickHander(props.Title); }}>
-            {props.Title}
-        </div >
-    );
-};
-
-
-
 
 export default AuthorQuiz;
