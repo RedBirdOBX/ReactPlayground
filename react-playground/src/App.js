@@ -8,7 +8,6 @@ import './App.css';
 //import LoopImages from './Apps/LoopImages/LoopImages';
 //import CaptureInputValueApp from './Apps/CapturingInputValue/CaptureInputValueApp';
 //import ColorChanger from './Apps/ColorChangerClasses/ColorChanger';
-//import ColorChanger from './Apps/ColorChangerFunctions/ColorChanger';
 //import TicTacToeGame from './Apps/TicTacToe/TicTacToeGame';
 //import PropsValidationApp from './Apps/PropsValidation/PropsValidationApp';
 //import TestExampleApp from './Apps/TestComponentExample/TestExampleApp';

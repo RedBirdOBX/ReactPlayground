@@ -13,7 +13,7 @@ let darkBtn = new ButtonConfig("Dark", "btn btn-lg btn-dark");
 let buttonConfigs = [];
 buttonConfigs.push(primaryBtn, secondaryBtn, successBtn, dangerBtn, warningBtn, infoBtn, lightBtn, darkBtn);
 
-function ButtonConfig(name, style) 
+function ButtonConfig(name, style)
 {
     this.ButtonName = name;
     this.ButtonStyle = style;
@@ -29,7 +29,6 @@ const ButtonList = (props) =>
                         ButtonConfig={config} />)
                 }
             </div>);
-
 };
 
 export default ButtonList;

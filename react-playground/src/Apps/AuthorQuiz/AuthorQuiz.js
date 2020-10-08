@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {shuffle, sample} from 'underscore';
 import Hero from './Components/Hero';
-import Turn from './Components/Turn';
+import QuizTurn from './Components/QuizTurn';
 import Continue from './Components/Continue';
 import Footer from './Components/Footer';
 
@@ -63,14 +63,14 @@ const AuthorQuiz = (highlight) =>
     const [bgHighlight, SetBgHighlight] = useState("");
 
     // for testing
-    console.log('All Books:');
-    console.dir(allBooks);
+    //console.log('All Books:');
+    //console.dir(allBooks);
 
-    console.log('Question Data:');
-    console.dir(questionData);
+    //console.log('Question Data:');
+    //console.dir(questionData);
 
     // answer == title
-    const ValidateAnswerFunction = (answer) =>
+    const ProcessAnswer = (answer) =>
     {
         let isCorrect = questionData.Author.Books.some((book) => book === answer );
         let newHighlight = isCorrect ? "correct" : "wrong";
@@ -80,9 +80,9 @@ const AuthorQuiz = (highlight) =>
     return(
     <div className="container-fluid">
         <Hero />
-            <Turn TurnData={questionData}
+            <QuizTurn TurnData={questionData}
                 Highlight={bgHighlight}
-                AnswerHandler={ValidateAnswerFunction}
+                ProcessAnswerRef={ProcessAnswer}
             />
         <Continue />
         <Footer />
