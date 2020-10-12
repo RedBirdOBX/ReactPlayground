@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Continue = (props) =>
+const Continue = () =>
 {
-    return (
-        <div></div>
-    );
+   return (
+       <div></div>
+   );
 };
 
 export default Continue;

@@ -1,33 +1,29 @@
-import React, {useState} from 'react';
-import {shuffle, sample} from 'underscore';
+import React from 'react';
 import Hero from './Components/Hero';
-import QuizTurn from './Components/QuizTurn';
+import Footer from './Components/Footer'
 import Continue from './Components/Continue';
-import Footer from './Components/Footer';
+import TurnAuthor from './Components/TurnAuthor'
+import ChoiceList from './Components/ChoiceList';
+import { shuffle, sample } from 'underscore';
 
-// TODO:
-//      use props validation (https://app.pluralsight.com/course-player?clipId=c9d9aa52-a7dc-43d2-9679-9c3054d48efd   9:00)
-
-function TurnData(fourRandomBooks, author)
+const AuthorQuiz = (props) =>
 {
-    this.FourRandomBooks = fourRandomBooks;
-    this.Author = author;
-}
 
-function Author(id, name, imgUrl, imgSource, books)
-{
-    this.Id = id;
-    this.Name = name;
-    this.ImageUrl = imgUrl;
-    this.ImageSource = imgSource;
-    this.Books = books;
-}
+    // APP DATA - can be refactored
+    function Author(id, name, imgUrl, imgSource, books)
+    {
+        this.Id = id;
+        this.Name = name;
+        this.ImageUrl = imgUrl;
+        this.ImageSource = imgSource;
+        this.Books = books;
+    }
 
-const AuthorQuiz = (highlight) =>
-{
-    // App Data
-    let allBooks = [];
     let authors = [];
+    let allBooks = [];
+    let fourRandomBooks = [];
+
+    // build authors
     let twain = new Author(1, 'Mark Twain', 'Images/Authors/mark-twain.jpg', 'Wikimedia Commons', ['The Adventures of Huckleberry Finn', 'Life on the Mississippi']);
     let conrad = new Author(2, 'Joseph Conrad', 'Images/Authors/joseph-conrad.jpg', 'Wikimedia Commons', ['Heart of Darkness']);
     let rowling = new Author(3, 'J.K Rowling', 'Images/Authors/jk-rowling.jpg', 'Wikimedia Commons', ['Harry Potter and the Sorcerers Stone', 'Harry Potter and some other story']);
@@ -36,57 +32,66 @@ const AuthorQuiz = (highlight) =>
     let clarke = new Author(6, 'Arthur C Clarke', 'Images/Authors/arthur-c-clarke.jpg', 'Wikimedia Commons', ['2001', 'Rendevous with Rama']);
     authors.push(twain, conrad, rowling, king, shakespeare, clarke);
 
-    // get list of **all** books
+    // get all the books
     authors.forEach((author) => { author.Books.forEach((book) => { allBooks.push(book); }); });
     allBooks = allBooks.sort();
 
-    const GetTurnData = () =>
+    // select the turn author
+    const GetTurnAuthor = () =>
     {
-        let fourRandomBooks = shuffle(allBooks).slice(0, 4);
+        fourRandomBooks = shuffle(allBooks).slice(0, 4);
 
         // establish the ANSWER - pick one of the 4 random books
         const answer = sample(fourRandomBooks);
 
         // the author will come from the authors collection where the author has abook title that matches the answer
         let turnAuthor = authors.find((author) => author.Books.some((title) => title === answer))
-        let turnData = new TurnData(fourRandomBooks, turnAuthor);
+        //let turnData = new TurnData(fourRandomBooks, turnAuthor);
 
-        return turnData;
+        return turnAuthor;
     };
+    const defaultTurnAuthor = GetTurnAuthor();
 
-    // default starting-question data
-    const defaultQuestionData = GetTurnData();
 
-    // state / hooks
-    // set the question and highlight data
-    const [questionData, SetQuestionData] = useState(defaultQuestionData);
-    const [bgHighlight, SetBgHighlight] = useState("");
+    // build the choices
 
-    // for testing
-    //console.log('All Books:');
-    //console.dir(allBooks);
 
-    //console.log('Question Data:');
-    //console.dir(questionData);
 
-    // answer == title
+    // testing
+    // console.log("Authors");
+    // console.dir(authors);
+    // console.log("All books");
+    // console.dir(allBooks);
+    // console.log("Turn Author");
+    // console.dir(defaultTurnAuthor);
+    // END OF APP DATA
+
+
     const ProcessAnswer = (answer) =>
     {
-        let isCorrect = questionData.Author.Books.some((book) => book === answer );
-        let newHighlight = isCorrect ? "correct" : "wrong";
-        SetBgHighlight(newHighlight);
+        console.log(`choice ${answer} clicked!`);
     };
 
-    return(
-    <div className="container-fluid">
-        <Hero />
-            <QuizTurn TurnData={questionData}
-                Highlight={bgHighlight}
-                ProcessAnswerRef={ProcessAnswer}
-            />
-        <Continue />
-        <Footer />
-    </div>);
+
+
+
+    return (
+        <div className="container-fluid">
+            <Hero />
+            <div className="row turn">
+                <div className="col-4 offset-1">
+                    <h5>Author</h5>
+                    <TurnAuthor Author={defaultTurnAuthor} />
+                </div>
+                <div className="col-6">
+                    <h5>Choices</h5>
+                    <ChoiceList Choices={fourRandomBooks} ChoiceSelectionHander={ProcessAnswer} />
+                </div>
+            </div>
+            <Continue />
+            <Footer />
+        </div>
+   );
 };
 
 export default AuthorQuiz;
