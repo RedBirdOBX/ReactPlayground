@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TurnAuthor = (props) =>
+const SelectedAuthor = (props) =>
 {
     return (
         <div>
@@ -9,4 +9,4 @@ const TurnAuthor = (props) =>
     );
 };
 
-export default TurnAuthor;
+export default SelectedAuthor;

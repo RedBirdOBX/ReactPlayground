@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Hero from './Components/Hero';
 import Footer from './Components/Footer'
 import Continue from './Components/Continue';
-import TurnAuthor from './Components/TurnAuthor'
-import ChoiceList from './Components/ChoiceList';
+import SelectedAuthor from './Components/SelectedAuthor'
+import AnswerList from './Components/AnswerList';
 import { shuffle, sample } from 'underscore';
 
 const AuthorQuiz = (props) =>
@@ -37,7 +37,7 @@ const AuthorQuiz = (props) =>
     allBooks = allBooks.sort();
 
     // select the turn author
-    const GetTurnAuthor = () =>
+    const GetSelectedAuthor = () =>
     {
         fourRandomBooks = shuffle(allBooks).slice(0, 4);
 
@@ -50,10 +50,14 @@ const AuthorQuiz = (props) =>
 
         return turnAuthor;
     };
-    const defaultTurnAuthor = GetTurnAuthor();
+
+    const defaultSelectedAuthor = GetSelectedAuthor();
 
 
-    // build the choices
+    // state / hooks
+    // set the question and highlight data
+    const [selectedAuthor, SetSelectedAuthor] = useState(defaultSelectedAuthor);
+    const [bgHighlight, SetBgHighlight] = useState("");
 
 
 
@@ -69,7 +73,13 @@ const AuthorQuiz = (props) =>
 
     const ProcessAnswer = (answer) =>
     {
-        console.log(`choice ${answer} clicked!`);
+        console.log(`${answer} clicked!`);
+        let isCorrect = selectedAuthor.Books.some((book) => book === answer);
+        console.log(isCorrect);
+        let newHighlight = isCorrect ? "correct" : "wrong";
+        SetBgHighlight(newHighlight);
+        console.log(newHighlight);
+        console.log(bgHighlight);
     };
 
 
@@ -81,11 +91,11 @@ const AuthorQuiz = (props) =>
             <div className="row turn">
                 <div className="col-4 offset-1">
                     <h5>Author</h5>
-                    <TurnAuthor Author={defaultTurnAuthor} />
+                    <SelectedAuthor Author={defaultSelectedAuthor} />
                 </div>
                 <div className="col-6">
-                    <h5>Choices</h5>
-                    <ChoiceList Choices={fourRandomBooks} ChoiceSelectionHander={ProcessAnswer} />
+                    <h5>Pick the a book by the author</h5>
+                    <AnswerList Answers={fourRandomBooks} Highlight={bgHighlight} ChoiceSelectionHander={ProcessAnswer} />
                 </div>
             </div>
             <Continue />
