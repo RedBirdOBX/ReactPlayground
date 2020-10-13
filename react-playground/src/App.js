@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState}  from 'react';
 //import logo from './logo.svg';
 import './App.css';
 
@@ -16,8 +16,16 @@ import './App.css';
 //import PropsChildrenExampleApp from './Apps/PropsChildrenExample/PropsChildrenExampleApp';
 import AuthorQuiz from './Apps/AuthorQuiz/AuthorQuiz';
 
+
 // comment and uncomment out the app components you wish to test with.
-function App() {
+function App()
+{
+
+    // for AuthorQuiz
+    const [gameId, UpdateGameId] = useState(1);
+    const [authorCounter, UpdateAuthorCounter] = useState(1);
+    const LoadNewGame = () => { UpdateGameId(gameId + 1); UpdateAuthorCounter(authorCounter + 1)};
+
   return (
 
     // default
@@ -41,7 +49,7 @@ function App() {
     //<EventExampleApp />
     //<MultiButtonsApp NumberOfButtons={5} />
     //<PropsChildrenExampleApp />
-    <AuthorQuiz />
+    <AuthorQuiz AuthorCounter={authorCounter} NewGameHandler={LoadNewGame} />
   );
 }
 

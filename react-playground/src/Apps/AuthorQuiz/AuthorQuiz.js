@@ -6,38 +6,42 @@ import SelectedAuthor from './Components/SelectedAuthor'
 import AnswerList from './Components/AnswerList';
 import { shuffle, sample } from 'underscore';
 
+function Author(id, name, imgUrl, imgSource, books)
+{
+    this.Id = id;
+    this.Name = name;
+    this.ImageUrl = imgUrl;
+    this.ImageSource = imgSource;
+    this.Books = books;
+}
+
 const AuthorQuiz = (props) =>
 {
-
-    // APP DATA - can be refactored
-    function Author(id, name, imgUrl, imgSource, books)
-    {
-        this.Id = id;
-        this.Name = name;
-        this.ImageUrl = imgUrl;
-        this.ImageSource = imgSource;
-        this.Books = books;
-    }
-
     let authors = [];
     let allBooks = [];
     let fourRandomBooks = [];
+    let defaultSelectedAuthor = null;
 
-    // build authors
-    let twain = new Author(1, 'Mark Twain', 'Images/Authors/mark-twain.jpg', 'Wikimedia Commons', ['The Adventures of Huckleberry Finn', 'Life on the Mississippi']);
-    let conrad = new Author(2, 'Joseph Conrad', 'Images/Authors/joseph-conrad.jpg', 'Wikimedia Commons', ['Heart of Darkness']);
-    let rowling = new Author(3, 'J.K Rowling', 'Images/Authors/jk-rowling.jpg', 'Wikimedia Commons', ['Harry Potter and the Sorcerers Stone', 'Harry Potter and some other story']);
-    let king = new Author(4, 'Stephen King', 'Images/Authors/stephen-king.jpg', 'Wikimedia Commons', ['The Shining', 'It', 'Carrie']);
-    let shakespeare = new Author(5, 'William Shakespeare', 'Images/Authors/william-shakespeare.jpg', 'Wikimedia Commons', ['Hamlet', 'Macbeth']);
-    let clarke = new Author(6, 'Arthur C Clarke', 'Images/Authors/arthur-c-clarke.jpg', 'Wikimedia Commons', ['2001', 'Rendevous with Rama']);
-    authors.push(twain, conrad, rowling, king, shakespeare, clarke);
+    console.dir(props);
 
-    // get all the books
-    authors.forEach((author) => { author.Books.forEach((book) => { allBooks.push(book); }); });
-    allBooks = allBooks.sort();
+    const BuildAuthors = () =>
+    {
+        let twain = new Author(1, 'Mark Twain', 'Images/Authors/mark-twain.jpg', 'Wikimedia Commons', ['The Adventures of Huckleberry Finn', 'Life on the Mississippi']);
+        let conrad = new Author(2, 'Joseph Conrad', 'Images/Authors/joseph-conrad.jpg', 'Wikimedia Commons', ['Heart of Darkness']);
+        let rowling = new Author(3, 'J.K Rowling', 'Images/Authors/jk-rowling.jpg', 'Wikimedia Commons', ['Harry Potter and the Sorcerers Stone', 'Harry Potter and some other story']);
+        let king = new Author(4, 'Stephen King', 'Images/Authors/stephen-king.jpg', 'Wikimedia Commons', ['The Shining', 'It', 'Carrie']);
+        let shakespeare = new Author(5, 'William Shakespeare', 'Images/Authors/william-shakespeare.jpg', 'Wikimedia Commons', ['Hamlet', 'Macbeth']);
+        let clarke = new Author(6, 'Arthur C Clarke', 'Images/Authors/arthur-c-clarke.jpg', 'Wikimedia Commons', ['2001', 'Rendevous with Rama']);
+        authors.push(twain, conrad, rowling, king, shakespeare, clarke);
+    };
 
-    // select the turn author
-    const GetSelectedAuthor = () =>
+    const BuildAllBooks = () =>
+    {
+        authors.forEach((author) => { author.Books.forEach((book) => { allBooks.push(book); }); });
+        allBooks = allBooks.sort();
+    };
+
+    const SetSelectedAuthor = () =>
     {
         fourRandomBooks = shuffle(allBooks).slice(0, 4);
 
@@ -45,60 +49,36 @@ const AuthorQuiz = (props) =>
         const answer = sample(fourRandomBooks);
 
         // the author will come from the authors collection where the author has abook title that matches the answer
-        let turnAuthor = authors.find((author) => author.Books.some((title) => title === answer))
+        let selectedAuthor = authors.find((author) => author.Books.some((title) => title === answer))
         //let turnData = new TurnData(fourRandomBooks, turnAuthor);
 
-        return turnAuthor;
+        return selectedAuthor;
     };
 
-    const defaultSelectedAuthor = GetSelectedAuthor();
+    BuildAuthors();
+    BuildAllBooks();
+    SetSelectedAuthor();
 
+    defaultSelectedAuthor = SetSelectedAuthor();
 
-    // state / hooks
-    // set the question and highlight data
-    const [selectedAuthor, SetSelectedAuthor] = useState(defaultSelectedAuthor);
-    const [bgHighlight, SetBgHighlight] = useState("");
-
-
-
-    // testing
-    // console.log("Authors");
-    // console.dir(authors);
-    // console.log("All books");
-    // console.dir(allBooks);
-    // console.log("Turn Author");
-    // console.dir(defaultTurnAuthor);
-    // END OF APP DATA
-
-
-    const ProcessAnswer = (answer) =>
-    {
-        console.log(`${answer} clicked!`);
-        let isCorrect = selectedAuthor.Books.some((book) => book === answer);
-        console.log(isCorrect);
-        let newHighlight = isCorrect ? "correct" : "wrong";
-        SetBgHighlight(newHighlight);
-        console.log(newHighlight);
-        console.log(bgHighlight);
-    };
-
-
-
+    // state & hooks
+    // I'm not so sure we need state here
+    const [selectedAuthor, SetNewSelectedAuthor] = useState(defaultSelectedAuthor);
 
     return (
         <div className="container-fluid">
             <Hero />
             <div className="row turn">
                 <div className="col-4 offset-1">
-                    <h5>Author</h5>
+                    <h5 className="text-center">Author {props.AuthorCounter}</h5>
                     <SelectedAuthor Author={defaultSelectedAuthor} />
                 </div>
                 <div className="col-6">
                     <h5>Pick the a book by the author</h5>
-                    <AnswerList Answers={fourRandomBooks} Highlight={bgHighlight} ChoiceSelectionHander={ProcessAnswer} />
+                    <AnswerList Answers={fourRandomBooks} Author={selectedAuthor} />
                 </div>
             </div>
-            <Continue />
+            <Continue ClickHander={props.NewGameHandler} />
             <Footer />
         </div>
    );
