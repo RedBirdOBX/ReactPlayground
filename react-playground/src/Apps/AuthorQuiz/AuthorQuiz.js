@@ -6,6 +6,10 @@ import SelectedAuthor from './Components/SelectedAuthor'
 import AnswerList from './Components/AnswerList';
 import { shuffle, sample } from 'underscore';
 
+
+// TODO:
+//      use props validation (https://app.pluralsight.com/course-player?clipId=c9d9aa52-a7dc-43d2-9679-9c3054d48efd   9:00)
+
 function Author(id, name, imgUrl, imgSource, books)
 {
     this.Id = id;

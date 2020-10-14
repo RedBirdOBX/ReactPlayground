@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
+// Should receive 2 props: Answer, & Author
 
 const Answer = (props) =>
 {
@@ -31,5 +34,12 @@ const Answer = (props) =>
         </div>
    );
 };
+
+// adding new property of type 'propTypes'.
+Answer.propTypes =
+{
+    Answer: PropTypes.string.isRequired,
+    Author: PropTypes.object.isRequired
+}
 
 export default Answer;

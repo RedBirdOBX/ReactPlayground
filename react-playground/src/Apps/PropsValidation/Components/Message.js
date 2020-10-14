@@ -9,7 +9,7 @@ const Message = (props) =>
 };
 
 
-// here, we add a new propTypes property to the function/object.
+// here, we add a new propTypes property to the component.
 // the value of propTypes is an object.
 Message.propTypes =
 {
