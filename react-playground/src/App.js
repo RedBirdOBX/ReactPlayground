@@ -23,8 +23,7 @@ function App()
 
     // for AuthorQuiz
     const [gameId, UpdateGameId] = useState(1);
-    const [authorCounter, UpdateAuthorCounter] = useState(1);
-    const LoadNewGame = () => { UpdateGameId(gameId + 1); UpdateAuthorCounter(authorCounter + 1)};
+    const LoadNewGame = () => { UpdateGameId(gameId + 1); };
 
   return (
 
@@ -49,7 +48,7 @@ function App()
     //<EventExampleApp />
     //<MultiButtonsApp NumberOfButtons={5} />
     //<PropsChildrenExampleApp />
-    <AuthorQuiz AuthorCounter={authorCounter} NewGameHandler={LoadNewGame} />
+    <AuthorQuiz NewGameHandler={LoadNewGame} />
   );
 }
 

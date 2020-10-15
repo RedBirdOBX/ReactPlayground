@@ -10,6 +10,8 @@ const Answer = (props) =>
 
     const ProcessAnswer = (answer, author) =>
     {
+        console.log("answer is " + answer);
+        console.log("author is " + author.Name);
         let isCorrect = author.Books.some((book) => book === answer);
         let answerStatus = isCorrect ? "correct" : "wrong";
         SetBgColor(GetBackgroundColor(answerStatus));

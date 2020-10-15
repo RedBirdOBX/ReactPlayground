@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Hero from './Components/Hero';
 import Footer from './Components/Footer'
+import Score from './Components/Score';
 import Continue from './Components/Continue';
 import SelectedAuthor from './Components/SelectedAuthor'
 import AnswerList from './Components/AnswerList';
@@ -26,8 +27,6 @@ const AuthorQuiz = (props) =>
     let fourRandomBooks = [];
     let defaultSelectedAuthor = null;
 
-    console.dir(props);
-
     const BuildAuthors = () =>
     {
         let twain = new Author(1, 'Mark Twain', 'Images/Authors/mark-twain.jpg', 'Wikimedia Commons', ['The Adventures of Huckleberry Finn', 'Life on the Mississippi']);
@@ -36,7 +35,9 @@ const AuthorQuiz = (props) =>
         let king = new Author(4, 'Stephen King', 'Images/Authors/stephen-king.jpg', 'Wikimedia Commons', ['The Shining', 'It', 'Carrie']);
         let shakespeare = new Author(5, 'William Shakespeare', 'Images/Authors/william-shakespeare.jpg', 'Wikimedia Commons', ['Hamlet', 'Macbeth']);
         let clarke = new Author(6, 'Arthur C Clarke', 'Images/Authors/arthur-c-clarke.jpg', 'Wikimedia Commons', ['2001', 'Rendevous with Rama']);
-        authors.push(twain, conrad, rowling, king, shakespeare, clarke);
+        let stevenson = new Author(7, 'Neal Stevenson', 'Images/Authors/neal-stevenson.jpg', 'Wikimedia Commons', ['SevenEves']);
+        let asimov = new Author(8, 'Isaac Asimov', 'Images/Authors/isaac-asimov.jpg', 'Wikimedia Commons', ['I, Robot']);
+        authors.push(twain, conrad, rowling, king, shakespeare, clarke, stevenson, asimov);
     };
 
     const BuildAllBooks = () =>
@@ -67,21 +68,25 @@ const AuthorQuiz = (props) =>
 
     // state & hooks
     // I'm not so sure we need state here
-    const [selectedAuthor, SetNewSelectedAuthor] = useState(defaultSelectedAuthor);
+    const [rightTotal, SetRightTotal] = useState(0);
+    const [wrongTotal, SetWrongTotal] = useState(0);
+
+    // for testing
+    console.dir(defaultSelectedAuthor.Name);
 
     return (
         <div className="container-fluid">
             <Hero />
             <div className="row turn">
                 <div className="col-4 offset-1">
-                    <h5 className="text-center">Author {props.AuthorCounter}</h5>
                     <SelectedAuthor Author={defaultSelectedAuthor} />
                 </div>
                 <div className="col-6">
-                    <h5>Pick the a book by the author</h5>
-                    <AnswerList Answers={fourRandomBooks} Author={selectedAuthor} />
+                    <h5>Which book did this author write?</h5>
+                    <AnswerList Answers={fourRandomBooks} Author={defaultSelectedAuthor} />
                 </div>
             </div>
+            <Score Right={rightTotal} Wrong={wrongTotal} />
             <Continue ClickHander={props.NewGameHandler} />
             <Footer />
         </div>

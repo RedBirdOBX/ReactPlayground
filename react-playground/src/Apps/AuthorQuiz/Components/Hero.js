@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Name = () =>
+const Hero = () =>
 {
    return (
         <div className="row">
@@ -12,4 +12,4 @@ const Name = () =>
    );
 };
 
-export default Name;
+export default Hero;
