@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Hero = () =>
+const Hero = (props) =>
 {
    return (
-        <div className="row">
-            <div className="jumbotron col-10 offset-1">
-                <h1>Author Quiz</h1>
-                <p>Select the book written by the author shown.</p>
-            </div>
-        </div>
+       <div className="row">
+           <div className="jumbotron col-12">
+               <h2>Author Quiz</h2>
+               <p>Select the book written by the author shown.</p>
+           </div>
+       </div>
    );
 };
 

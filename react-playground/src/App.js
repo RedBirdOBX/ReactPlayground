@@ -23,7 +23,12 @@ function App()
 
     // for AuthorQuiz
     const [gameId, UpdateGameId] = useState(1);
-    const LoadNewGame = () => { UpdateGameId(gameId + 1); };
+    const LoadNewGame = () =>
+    {
+        UpdateGameId(gameId + 1);
+        console.log("Loading new game");
+        console.log(gameId);
+    };
 
   return (
 
@@ -48,7 +53,7 @@ function App()
     //<EventExampleApp />
     //<MultiButtonsApp NumberOfButtons={5} />
     //<PropsChildrenExampleApp />
-    <AuthorQuiz NewGameHandler={LoadNewGame} />
+    <AuthorQuiz GameId={gameId} NewGameHandler={LoadNewGame} />
   );
 }
 
