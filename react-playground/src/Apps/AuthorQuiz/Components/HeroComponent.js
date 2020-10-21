@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Hero = (props) =>
+const HeroComponent = (props) =>
 {
    return (
        <div className="row">
@@ -12,4 +12,4 @@ const Hero = (props) =>
    );
 };
 
-export default Hero;
+export default HeroComponent;

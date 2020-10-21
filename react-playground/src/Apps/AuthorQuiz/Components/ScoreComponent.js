@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Score = (props) =>
+const ScoreComponent = (props) =>
 {
    return (
        <div className="row">
@@ -14,4 +14,4 @@ const Score = (props) =>
    );
 };
 
-export default Score;
+export default ScoreComponent;

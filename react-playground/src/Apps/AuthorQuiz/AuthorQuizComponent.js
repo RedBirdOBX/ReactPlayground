@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import Hero from './Components/Hero';
-import SelectedAuthor from './Components/SelectedAuthor';
-import AnswerList from './Components/AnswerList';
-import NextAuthor from './Components/NextAuthor';
-import Score from './Components/Score';
-import NewGame from './Components/NewGame';
-import Footer from './Components/Footer';
+import HeroComponent from './Components/HeroComponent';
+import AuthorComponent from './Components/AuthorComponent';
+import AnswerListComponent from './Components/AnswerListComponent';
+import NextAuthorComponent from './Components/NextAuthorComponent';
+import ScoreComponent from './Components/ScoreComponent';
+import NewGameComponent from './Components/NewGameComponent';
+import FooterComponent from './Components/FooterComponent';
 import { shuffle, sample } from 'underscore';
 
 // Start:
-//  object and var names shouldn't be the same as component names
 //  fix score vals in Score Component
 // does updating score reset whole game?  WHERE should this state be maintained?
 
@@ -30,11 +29,11 @@ const AuthorQuiz = (props) =>
         this.Wrong = wrong;
     }
 
-    // app data, not component data
     let authors = [];
     let allBooks = [];
-    let fourRandomBooks = [];
-    let selectedAuthor = null;
+    let possibleAnswers = [];
+    let defaultAuthor = null;
+    let answer = "";
 
     const BuildAuthors = () =>
     {
@@ -55,44 +54,60 @@ const AuthorQuiz = (props) =>
         allBooks = allBooks.sort();
     };
 
-    const SetSelectedAuthor = () =>
+    const GetPossibleAnswers = () =>
     {
-        fourRandomBooks = shuffle(allBooks).slice(0, 4);
-        const answer = sample(fourRandomBooks);
+        possibleAnswers = shuffle(allBooks).slice(0, 4);
+    };
 
+    const GetAnswer = () =>
+    {
+        answer = sample(possibleAnswers);
+    };
+
+    const SetAuthor = () =>
+    {
+        // this should be called when we want a new author
         // the author will come from the authors collection where the author has abook title that matches the answer
-        let selectedAuthor = authors.find((author) => author.Books.some((title) => title === answer))
-        return selectedAuthor;
+        let a = authors.find((a) => a.Books.some((title) => title === answer))
+        setAuthor(a);
+    };
+
+    const SetDefaultAuthor = () =>
+    {
+        // get a random author
+        defaultAuthor = sample(authors);
+    };
+
+    const ProcessAnswer = (arg) =>
+    {
+        console.log('checking answer....');
     };
 
     BuildAuthors();
     BuildAllBooks();
-    SetSelectedAuthor();
+    GetPossibleAnswers();
+    GetAnswer();
+    SetDefaultAuthor();
 
-    selectedAuthor = SetSelectedAuthor();
-
-    // state & hooks
-    const [author, setAuthor] = useState(selectedAuthor);
+    const [author, setAuthor] = useState(defaultAuthor);
     const [gameScore, setGameScore] = useState( {"Right": 0, "Wrong": 0} );
-
-    //console.dir(score);
 
    return (
        <div className="container-fluid">
-           <Hero />
+           <HeroComponent />
            <div className="row turn">
                <div className="col-5">
-                   <SelectedAuthor SelectedAuthor={selectedAuthor} />
-                   <Score GameScore={gameScore}/>
-                   <NewGame NewGameHandler={props.NewGameHandler} />
+                   <AuthorComponent Author={author} />
+                   <ScoreComponent GameScore={gameScore}/>
+                   <NewGameComponent NewGameHandler={props.NewGameHandler} />
                </div>
                <div className="col-7">
                    <h5>Which book did this author write?</h5>
-                   <AnswerList PossibleAnswers={fourRandomBooks} SelectedAuthor={selectedAuthor} />
-                   <NextAuthor />
+                   <AnswerListComponent PossibleAnswers={possibleAnswers} Author={author} ProcessAnswerRef={ProcessAnswer} />
+                   <NextAuthorComponent />
                </div>
            </div>
-           <Footer GameId={props.GameId} />
+           <FooterComponent GameId={props.GameId} />
        </div>
    );
 };

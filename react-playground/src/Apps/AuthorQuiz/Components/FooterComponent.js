@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Footer = (props) =>
+const FooterComponent = (props) =>
 {
    return (
    <div className="text-center"><small>GameId {props.GameId}</small></div>
    );
 };
 
-export default Footer;
+export default FooterComponent;
