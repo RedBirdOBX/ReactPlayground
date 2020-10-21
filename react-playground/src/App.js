@@ -20,14 +20,12 @@ import AuthorQuiz from './Apps/AuthorQuiz/AuthorQuiz';
 // comment and uncomment out the app components you wish to test with.
 function App()
 {
-
     // for AuthorQuiz
     const [gameId, UpdateGameId] = useState(1);
     const LoadNewGame = () =>
     {
-        UpdateGameId(gameId + 1);
         console.log("Loading new game");
-        console.log(gameId);
+        UpdateGameId(gameId + 1);
     };
 
   return (

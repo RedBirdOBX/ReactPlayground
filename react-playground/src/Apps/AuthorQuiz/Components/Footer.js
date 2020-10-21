@@ -2,15 +2,8 @@ import React from 'react';
 
 const Footer = (props) =>
 {
-
-//    const [myStateObj, setMyStateObj] = useState(myDefaultVal);
-//    const UpdateState = (newVal) =>
-//    {
-//        setMyStateOb(newVal);
-//    }
-
    return (
-       <div className="text-center"><small>game #</small></div>
+   <div className="text-center"><small>GameId {props.GameId}</small></div>
    );
 };
 

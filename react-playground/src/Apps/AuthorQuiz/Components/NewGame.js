@@ -11,7 +11,7 @@ const NewGame = (props) =>
 
    return (
        <div className="text-center">
-           <button className="btn btn-primary btn-lg" onClick={() => { props.ClickHander(); }}>
+           <button className="btn btn-primary btn-lg" onClick={() => { props.NewGameHandler(); }}>
                New Game
             </button>
        </div>

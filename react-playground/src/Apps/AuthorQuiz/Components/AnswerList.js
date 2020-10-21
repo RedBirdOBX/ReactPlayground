@@ -1,16 +1,15 @@
 import React from 'react';
+import Answer from './Answer';
+
 
 const AnswerList = (props) =>
 {
-
-//    const [myStateObj, setMyStateObj] = useState(myDefaultVal);
-//    const UpdateState = (newVal) =>
-//    {
-//        setMyStateOb(newVal);
-//    }
-
    return (
-       <div>The value is {props.MyValue}.</div>
+       <div>
+           {
+               props.PossibleAnswers.map((bookName) => <Answer key={bookName} Answer={bookName} SelectedAuthor={props.SelectedAuthor} AnswerHanderRef={props.AnswerHandlerRef} />)
+           }
+       </div>
    );
 };
 
