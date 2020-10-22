@@ -15,12 +15,13 @@ import './App.css';
 //import MultiButtonsApp from './Apps/MultiButtons/MultiButtonsApp';
 //import PropsChildrenExampleApp from './Apps/PropsChildrenExample/PropsChildrenExampleApp';
 import AuthorQuizComponent from './Apps/AuthorQuiz/AuthorQuizComponent';
+//import StateExperimentComponent from './Apps/StateExperimentApp/StateExperimentApp';
 
 
 // comment and uncomment out the app components you wish to test with.
 function App()
 {
-    // for AuthorQuiz
+    //for AuthorQuiz
     const [gameId, UpdateGameId] = useState(1);
     const LoadNewGame = () =>
     {
@@ -52,6 +53,7 @@ function App()
     //<MultiButtonsApp NumberOfButtons={5} />
     //<PropsChildrenExampleApp />
     <AuthorQuizComponent GameId={gameId} NewGameHandler={LoadNewGame} />
+    //<StateExperimentComponent />
   );
 }
 

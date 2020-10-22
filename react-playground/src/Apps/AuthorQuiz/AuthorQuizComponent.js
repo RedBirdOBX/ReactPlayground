@@ -8,10 +8,6 @@ import NewGameComponent from './Components/NewGameComponent';
 import FooterComponent from './Components/FooterComponent';
 import { shuffle, sample } from 'underscore';
 
-// Start:
-//  fix score vals in Score Component
-// does updating score reset whole game?  WHERE should this state be maintained?
-
 
 const AuthorQuiz = (props) =>
 {
@@ -34,6 +30,7 @@ const AuthorQuiz = (props) =>
     let possibleAnswers = [];
     let defaultAuthor = null;
     let answer = "";
+    let score = new Score(0,0);
 
     const BuildAuthors = () =>
     {
@@ -78,9 +75,15 @@ const AuthorQuiz = (props) =>
         defaultAuthor = sample(authors);
     };
 
-    const ProcessAnswer = (arg) =>
+    const ProcessAnswer = (isCorrect) =>
     {
-        console.log('checking answer....');
+        console.log('updating score....');
+
+        let right = (isCorrect) ? score.Right + 1 : score.Right;
+        let wrong = (!isCorrect) ? score.Wrong + 1: score.Wrong;
+        let newScore = new Score(right, wrong);
+        //setGameScore(newScore);
+        score = newScore;
     };
 
     BuildAuthors();
@@ -90,7 +93,7 @@ const AuthorQuiz = (props) =>
     SetDefaultAuthor();
 
     const [author, setAuthor] = useState(defaultAuthor);
-    const [gameScore, setGameScore] = useState( {"Right": 0, "Wrong": 0} );
+    //const [gameScore, setGameScore] = useState( {"Right": 0, "Wrong": 0} );
 
    return (
        <div className="container-fluid">
@@ -98,7 +101,7 @@ const AuthorQuiz = (props) =>
            <div className="row turn">
                <div className="col-5">
                    <AuthorComponent Author={author} />
-                   <ScoreComponent GameScore={gameScore}/>
+                   <ScoreComponent GameScore={score}/>
                    <NewGameComponent NewGameHandler={props.NewGameHandler} />
                </div>
                <div className="col-7">

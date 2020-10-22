@@ -18,10 +18,8 @@ const AnswerComponent = (props) =>
 
     const UpdateScore = (isCorrect) =>
     {
-        console.dir(isCorrect);
-
-        // start here
-        //props.AnswerHanderRef(isCorrect);
+       // start here
+        props.ProcessAnswerRef(isCorrect);
     };
 
     const GetBackgroundColor = (answerStatus) =>
