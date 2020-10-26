@@ -1,38 +1,62 @@
-import React, { useState } from 'react';
-import HeroComponent from './Components/HeroComponent';
-import AuthorComponent from './Components/AuthorComponent';
-import AnswerListComponent from './Components/AnswerListComponent';
-import NextAuthorComponent from './Components/NextAuthorComponent';
+import React, {useState} from 'react';
 import ScoreComponent from './Components/ScoreComponent';
-import NewGameComponent from './Components/NewGameComponent';
-import FooterComponent from './Components/FooterComponent';
-import { shuffle, sample } from 'underscore';
+import TurnComponent from './Components/TurnComponent';
 
-
-const AuthorQuiz = (props) =>
+const AuthorQuizComponent = (props) =>
 {
-    function Author(id, name, imgUrl, books)
-    {
-        this.Id = id;
-        this.Name = name;
-        this.ImageUrl = imgUrl;
-        this.Books = books;
-    }
 
+
+    // problem:
+    // when the score is updated, this component reloads so it rebuilds authos[] & allBooks[]
+    // possible solution - put them in state?
+
+    // relocate these
     function Score(right, wrong)
     {
         this.Right = right;
         this.Wrong = wrong;
     }
 
+    function Author(id, name, imgUrl, books) {
+        this.Id = id;
+        this.Name = name;
+        this.ImageUrl = imgUrl;
+        this.Books = books;
+    }
+
+
+    // state & hooks
+    const [gameId, UpdateGameId] = useState(1);
+    const [score, UpdateScore] = useState(new Score(0, 0));
+
     let authors = [];
     let allBooks = [];
-    let possibleAnswers = [];
-    let defaultAuthor = null;
-    let answer = "";
-    let score = new Score(0,0);
+    let rightAnswers = 0;
 
-    const BuildAuthors = () =>
+    const LoadNewGame = () =>
+    {
+        console.clear();
+        console.log("Loading new game");
+        UpdateGameId(gameId + 1);
+
+        UpdateScore(new Score(0, 0));
+    };
+
+    const UpdateGameScore = () =>
+    {
+        //console.log("updating score...");
+
+        //using state
+        let newScore = new Score(score.Right, score.Wrong);
+        newScore.Right = newScore.Right + 1;
+        UpdateScore(newScore);
+
+        // local test
+        // rightAnswers = rightAnswers+1;
+        // console.log(rightAnswers);
+    };
+
+    const BuildAllAuthors = () =>
     {
         let twain = new Author(1, 'Mark Twain', 'Images/Authors/mark-twain.jpg', ['The Adventures of Huckleberry Finn']);
         let conrad = new Author(2, 'Joseph Conrad', 'Images/Authors/joseph-conrad.jpg', ['Heart of Darkness']);
@@ -43,76 +67,32 @@ const AuthorQuiz = (props) =>
         let stevenson = new Author(7, 'Neal Stevenson', 'Images/Authors/neal-stevenson.jpg', ['SevenEves']);
         let asimov = new Author(8, 'Isaac Asimov', 'Images/Authors/isaac-asimov.jpg', ['I, Robot']);
         authors.push(twain, conrad, rowling, king, shakespeare, clarke, stevenson, asimov);
+        console.dir(authors);
     };
 
     const BuildAllBooks = () =>
     {
         authors.forEach((author) => { author.Books.forEach((book) => { allBooks.push(book); }); });
         allBooks = allBooks.sort();
+        console.dir(allBooks);
     };
 
-    const GetPossibleAnswers = () =>
-    {
-        possibleAnswers = shuffle(allBooks).slice(0, 4);
-    };
-
-    const GetAnswer = () =>
-    {
-        answer = sample(possibleAnswers);
-    };
-
-    const SetAuthor = () =>
-    {
-        // this should be called when we want a new author
-        // the author will come from the authors collection where the author has abook title that matches the answer
-        let a = authors.find((a) => a.Books.some((title) => title === answer))
-        setAuthor(a);
-    };
-
-    const SetDefaultAuthor = () =>
-    {
-        // get a random author
-        defaultAuthor = sample(authors);
-    };
-
-    const ProcessAnswer = (isCorrect) =>
-    {
-        console.log('updating score....');
-
-        let right = (isCorrect) ? score.Right + 1 : score.Right;
-        let wrong = (!isCorrect) ? score.Wrong + 1: score.Wrong;
-        let newScore = new Score(right, wrong);
-        //setGameScore(newScore);
-        score = newScore;
-    };
-
-    BuildAuthors();
+    BuildAllAuthors();
     BuildAllBooks();
-    GetPossibleAnswers();
-    GetAnswer();
-    SetDefaultAuthor();
-
-    const [author, setAuthor] = useState(defaultAuthor);
-    //const [gameScore, setGameScore] = useState( {"Right": 0, "Wrong": 0} );
 
    return (
-       <div className="container-fluid">
-           <HeroComponent />
-           <div className="row turn">
-               <div className="col-5">
-                   <AuthorComponent Author={author} />
-                   <ScoreComponent GameScore={score}/>
-                   <NewGameComponent NewGameHandler={props.NewGameHandler} />
-               </div>
-               <div className="col-7">
-                   <h5>Which book did this author write?</h5>
-                   <AnswerListComponent PossibleAnswers={possibleAnswers} Author={author} ProcessAnswerRef={ProcessAnswer} />
-                   <NextAuthorComponent />
-               </div>
+       <div>
+           <div>
+               {rightAnswers}
            </div>
-           <FooterComponent GameId={props.GameId} />
+           <ScoreComponent Score={score} Right={rightAnswers}/>
+           <TurnComponent
+                key={gameId}
+                GameId={gameId}
+                NewGameHandler={LoadNewGame}
+                UpdateScoreHandler={UpdateGameScore} />
        </div>
    );
 };
 
-export default AuthorQuiz;
+export default AuthorQuizComponent;

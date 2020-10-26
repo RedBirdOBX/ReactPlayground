@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HeroComponent = () =>
+const HeroComponent = (props) =>
 {
    return (
        <div className="row">

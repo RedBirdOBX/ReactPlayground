@@ -18,7 +18,6 @@ const AnswerComponent = (props) =>
 
     const UpdateScore = (isCorrect) =>
     {
-       // start here
         props.ProcessAnswerRef(isCorrect);
     };
 

@@ -21,14 +21,6 @@ import AuthorQuizComponent from './Apps/AuthorQuiz/AuthorQuizComponent';
 // comment and uncomment out the app components you wish to test with.
 function App()
 {
-    //for AuthorQuiz
-    const [gameId, UpdateGameId] = useState(1);
-    const LoadNewGame = () =>
-    {
-        console.log("Loading new game");
-        UpdateGameId(gameId + 1);
-    };
-
   return (
 
     // default
@@ -52,7 +44,7 @@ function App()
     //<EventExampleApp />
     //<MultiButtonsApp NumberOfButtons={5} />
     //<PropsChildrenExampleApp />
-    <AuthorQuizComponent GameId={gameId} NewGameHandler={LoadNewGame} />
+    <AuthorQuizComponent />
     //<StateExperimentComponent />
   );
 }
