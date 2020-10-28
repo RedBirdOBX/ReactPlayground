@@ -12,7 +12,7 @@ const TurnComponent = (props) =>
 {
     // keeps track of author and possible answers //
 
-    let possibleAnswers = [];
+    //let possibleAnswers = [];
     let allBooks = [];
     let answer = "";
 
@@ -57,6 +57,8 @@ const TurnComponent = (props) =>
     GetAuthorFromAnswer();
 
     const [author, GetAuthor] = useState(GetAuthorFromAnswer());
+    const [possibleAnswers, SetPossibleAnswer] = useState();
+    const [answer, SetAnswer] = useState();
 
    return (
        <div>

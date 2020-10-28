@@ -16,11 +16,13 @@ const AnswerComponent = (props) =>
         UpdateScore(isCorrect);
     };
 
-    const UpdateScore = (isCorrect) => {
+    const UpdateScore = (isCorrect) => 
+    {
         //props.ProcessAnswerRef(isCorrect);
     };
 
-    const GetBackgroundColor = (answerStatus) => {
+    const GetBackgroundColor = (answerStatus) => 
+    {
         let mapping =
         {
             "none": "",
