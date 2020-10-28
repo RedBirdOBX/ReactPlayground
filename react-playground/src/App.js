@@ -14,9 +14,9 @@ import './App.css';
 //import EventExampleApp from './Apps/EventExample/EventExampleApp';
 //import MultiButtonsApp from './Apps/MultiButtons/MultiButtonsApp';
 //import PropsChildrenExampleApp from './Apps/PropsChildrenExample/PropsChildrenExampleApp';
-import AuthorQuizComponent from './Apps/AuthorQuiz/AuthorQuizComponent';
+//import AuthorQuizComponent from './Apps/AuthorQuiz/AuthorQuizComponent';
 //import StateExperimentComponent from './Apps/StateExperimentApp/StateExperimentApp';
-
+import MatchGameComponent from './Apps/MatchGame/MatchGameComponent';
 
 // comment and uncomment out the app components you wish to test with.
 function App()
@@ -44,8 +44,9 @@ function App()
     //<EventExampleApp />
     //<MultiButtonsApp NumberOfButtons={5} />
     //<PropsChildrenExampleApp />
-    <AuthorQuizComponent />
+    //<AuthorQuizComponent />
     //<StateExperimentComponent />
+    <MatchGameComponent />
   );
 }
 
