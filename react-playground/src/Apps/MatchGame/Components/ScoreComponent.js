@@ -10,14 +10,35 @@ function Score(right, wrong)
 const ScoreComponent = () =>
 {
 
-    const [score, UpdateScore] = useState(new Score(0,0));
-//    const UpdateState = (newVal) => 
-//    {
-//        setMyStateOb(newVal);
-//    }
+    let startingScore = new Score(0, 0);
+    const [score, UpdateScore] = useState(startingScore);
+
+    const ProcessScore = (isCorrect) =>
+    {
+        let newScore = new Score(score.Right, score.Wrong);
+
+        if (isCorrect)
+        {
+            newScore.Right = newScore.Right + 1;
+        }
+        else
+        {
+            newScore.Wrong = newScore.Wrong + 1;
+        }
+
+        UpdateScore(newScore);
+    }
 
    return (
-       <div>Right: [{score.Right}] Wrong: [{score.Wrong}]</div>
+       <div className="text-center">
+            <div>
+                Right: [{score.Right}] Wrong: [{score.Wrong}]
+            </div>
+            <div>
+                <button onClick={() => ProcessScore(true) }>Right</button>
+                <button onClick={() => { ProcessScore(false) }}>Wrong</button>
+           </div>
+        </div>
    );
 };
 
