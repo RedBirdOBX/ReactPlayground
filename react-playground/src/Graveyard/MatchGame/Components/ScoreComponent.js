@@ -9,7 +9,6 @@ function Score(right, wrong)
 
 const ScoreComponent = () =>
 {
-
     let startingScore = new Score(0, 0);
     const [score, UpdateScore] = useState(startingScore);
 
@@ -30,7 +29,8 @@ const ScoreComponent = () =>
     }
 
    return (
-       <div className="text-center">
+       <div className="text-center border p-2">
+           <h4>Score Component</h4>
             <div>
                 Right: [{score.Right}] Wrong: [{score.Wrong}]
             </div>

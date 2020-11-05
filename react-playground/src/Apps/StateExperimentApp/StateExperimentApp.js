@@ -11,16 +11,20 @@ const StateExperimentComponent = (props) =>
         setRandomNum((Math.random() * 100).toFixed(0));
     }
 
-   return (
-       <div>
+    console.log("Parent Component invoked.");
+    return (
+        <div>
             <h3>Parent Component</h3>
             <p>
                 Random number stored in AppLevel State: <span className="text-info"><strong>{randomNum}</strong></span>.
-                When this number in state changes, this <strong>and any child</strong> components
+
+            </p>
+            <p>
+                When this number which is stored in state changes, this <strong>and any child</strong> components
                 are reinvoked.
             </p>
             <div>
-                <ChildComponent />
+                <ChildComponent ParentNumber={randomNum} />
             </div>
             <div className="text-center m-5">
                 <button className="btn btn-info" onClick={() => NewRandomNum()}>Update Parent State</button>
