@@ -17,7 +17,7 @@ import './App.css';
 //import AuthorQuizComponent from './Apps/AuthorQuiz/AuthorQuizComponent';
 //import StateExperimentComponent from './Apps/StateExperimentApp/StateExperimentApp';
 //import MatchGameComponent from './Apps/MatchGame/MatchGameComponent';
-import UsedNumbersComponent from './Apps/UsedNumberApp/UsedNumbersComponent';
+import UsedNumbersAppContainer from './Apps/UsedNumberApp/UsedNumbersAppContainer';
 
 // comment and uncomment out the app components you wish to test with.
 function App()
@@ -48,7 +48,7 @@ function App()
     //<AuthorQuizComponent />
     //<StateExperimentComponent />
     //<MatchGameComponent />
-    <UsedNumbersComponent />
+    <UsedNumbersAppContainer />
   );
 }
 
