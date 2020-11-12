@@ -1,6 +1,7 @@
 import React, {useState}  from 'react';
 //import logo from './logo.svg';
 import './App.css';
+import ObjectMatchGameContainer from './Apps/ObjectMatchGame/ObjectMatchGameContainer';
 
 //import CounterButtonApp from './Apps/CounterButton/CounterButtonApp';
 //import TimerDisplayApp from './Apps/TimerDisplay/TimerDisplayApp';
@@ -16,8 +17,7 @@ import './App.css';
 //import PropsChildrenExampleApp from './Apps/PropsChildrenExample/PropsChildrenExampleApp';
 //import AuthorQuizComponent from './Apps/AuthorQuiz/AuthorQuizComponent';
 //import StateExperimentComponent from './Apps/StateExperimentApp/StateExperimentApp';
-//import MatchGameComponent from './Apps/MatchGame/MatchGameComponent';
-import UsedNumbersAppContainer from './Apps/UsedNumberApp/UsedNumbersAppContainer';
+//import UsedNumbersAppContainer from './Apps/UsedNumberApp/UsedNumbersAppContainer';
 
 // comment and uncomment out the app components you wish to test with.
 function App()
@@ -47,8 +47,8 @@ function App()
     //<PropsChildrenExampleApp />
     //<AuthorQuizComponent />
     //<StateExperimentComponent />
-    //<MatchGameComponent />
-    <UsedNumbersAppContainer />
+    //<UsedNumbersAppContainer />
+    <ObjectMatchGameContainer />
   );
 }
 
