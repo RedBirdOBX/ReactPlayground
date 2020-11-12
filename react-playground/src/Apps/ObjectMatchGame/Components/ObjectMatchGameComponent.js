@@ -4,6 +4,7 @@ import InstructionsComponent from './InstructionsComponent';
 import DisplayComponent from './DisplayComponent';
 import ObjectComponent from './ObjectComponent';
 import GameOverComponent from './GameOverComponent';
+import ScoreComponent from './ScoreComponent';
 
 const ObjectMatchGameComponent = (props) =>
 {
@@ -62,8 +63,8 @@ const ObjectMatchGameComponent = (props) =>
 
     const UseCurrentObject = (obj) =>
     {
-        console.log("object to use up: ");
-        console.dir(obj);
+        //console.log("object to use up: ");
+        //console.dir(obj);
 
         // add to used
         let newUsedObjects = [obj];
@@ -95,6 +96,11 @@ const ObjectMatchGameComponent = (props) =>
         }
     };
 
+    const UpdateScore = (arg) =>
+    {
+        
+    };
+
     const [usedObjects, UpdateUsedObjects] = useState([]);
     const [availObjects, UpdateAvailObjects] = useState(objects);
     const [isGameOver, UpdateGameOver] = useState(false);
@@ -103,21 +109,27 @@ const ObjectMatchGameComponent = (props) =>
        <div className="border p-1 m-1 bg-info">
            <h4>Object Match Game Component</h4>
            <InstructionsComponent />
-
            <DisplayComponent
                 Objects={objects}
                 UsedObjects={usedObjects}
                 AvailObjects={availObjects}
                 IsGameOver={isGameOver} />
 
-
-           {
-               !isGameOver
-                   ? <ObjectComponent AvailObjects={availObjects}  UseCurrentObjectRef={UseCurrentObject} />
-                   : <GameOverComponent />
-           }
-
-
+                <div className="row">
+                    <div className="col-6">
+                    {
+                        !isGameOver
+                            ? <ObjectComponent
+                                AllObjects={objects}
+                                AvailObjects={availObjects}
+                                UseCurrentObjectRef={UseCurrentObject} />
+                            : <GameOverComponent />
+                    }
+                    </div>
+                    <div className="col-6">
+                        <ScoreComponent />
+                    </div>
+                </div>
            <ResetAppComponent ResetAppRef={props.ResetAppRef} />
        </div>
    );

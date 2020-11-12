@@ -7,6 +7,7 @@ const ObjectMatchGameContainer = (props) =>
     const [appId, ResetAppId] = useState(1);
     const ResetApp = () =>
     {
+        console.clear();
         ResetAppId(appId + 1);
     };
 
