@@ -22,6 +22,7 @@ const DisplayComponent = (props) =>
                All objects: {allObjectsHtml}<br />
                Avail objects: {availObjectsHtml}<br />
                Used objects: {usedObjectsHtml}<br />
+               Selected object: {props.SelectedObject.Name}
            </div>
        </div>
    );

@@ -3,7 +3,7 @@ import MatchComponent from './MatchComponent';
 
 const MatchListComponent = (props) =>
 {
-    console.dir(props.PossibleMatches);
+    console.dir(props);
 
    return (
        <div className="border p-1 m-1 bg-white">
@@ -13,7 +13,8 @@ const MatchListComponent = (props) =>
                    <MatchComponent key={match}
                        Answer={match}
                        Object={props.Object}
-                    //ProcessAnswerRef={props.ProcessAnswerRef}
+                       UpdateScoreRef={props.UpdateScoreRef}
+                       //ProcessAnswerRef={props.ProcessAnswerRef}
                     />)
            }
 

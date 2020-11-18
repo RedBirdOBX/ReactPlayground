@@ -5,6 +5,8 @@ import DisplayComponent from './DisplayComponent';
 import ObjectComponent from './ObjectComponent';
 import GameOverComponent from './GameOverComponent';
 import ScoreComponent from './ScoreComponent';
+import { shuffle, sample, all } from 'underscore';
+
 
 const ObjectMatchGameComponent = (props) =>
 {
@@ -61,11 +63,8 @@ const ObjectMatchGameComponent = (props) =>
         }
     ];
 
-    const UseCurrentObject = (obj) =>
+    const GetNextObject = (obj) =>
     {
-        //console.log("object to use up: ");
-        //console.dir(obj);
-
         // add to used
         let newUsedObjects = [obj];
         newUsedObjects = newUsedObjects.concat(usedObjects);
@@ -75,7 +74,7 @@ const ObjectMatchGameComponent = (props) =>
         // remove from avail
         if (newUsedObjects.length < objects.length)
         {
-            // now update avail numbers - remove the number from the avail array
+            // recreate the avail objects
             let newAvailObjects = [];
 
             availObjects.forEach((availObject) =>
@@ -88,6 +87,11 @@ const ObjectMatchGameComponent = (props) =>
 
             newAvailObjects = newAvailObjects.sort(o => o.Name);
             UpdateAvailObjects(newAvailObjects);
+
+            // finally, select a new object
+            let newObject = sample(newAvailObjects);
+            UpdateSelectedObject(newObject);
+            UpdatePossibleMatches(BuildPossibleMatches(newObject));
         }
         else
         {
@@ -96,23 +100,80 @@ const ObjectMatchGameComponent = (props) =>
         }
     };
 
-    const UpdateScore = (arg) =>
+    const BuildPossibleMatches = (object) =>
     {
-        
+        let possibleMatches = [];
+        let wrongMatches = [];
+
+        // add correct match
+        possibleMatches.push(object.Match)
+
+        // find 3 other matches which will be wrong
+        objects.forEach(o =>
+        {
+            if (o.Match !== object.Match)
+            {
+                wrongMatches.push(o.Match);
+            }
+        });
+
+        // concat the 2 arrays and shuffle. We now have all 4 answers
+        wrongMatches = shuffle(wrongMatches).slice(0, 3);
+        wrongMatches.forEach((w) => possibleMatches.push(w));
+        possibleMatches = shuffle(possibleMatches);
+
+        return possibleMatches;
     };
+
+    const UpdateScore = (answer) =>
+    {
+        if (answer === "correct")
+        {
+            UpdateCorrect(correct + 1);
+        }
+        else
+        {
+            UpdateIncorrect(incorrect + 1);
+        }
+    };
+
+    // const ProcessAnswer = (answer) =>
+    // {
+
+
+    //     let isCorrect = "";
+    //     if (answer === selectedObject.Match)
+    //     {
+    //         isCorrect = "correct";
+    //     }
+    //     else
+    //     {
+    //         isCorrect = "incorrect";
+    //     }
+
+    //     //props.UpdateScoreRef(isCorrect);
+    //     console.log(isCorrect);
+    //     console.log(answer);
+    // };
 
     const [usedObjects, UpdateUsedObjects] = useState([]);
     const [availObjects, UpdateAvailObjects] = useState(objects);
+    const [selectedObject, UpdateSelectedObject] = useState(sample(availObjects));
+    const [possibleMatches, UpdatePossibleMatches] = useState(BuildPossibleMatches(selectedObject));
+    const [correct, UpdateCorrect] = useState(0);
+    const [incorrect, UpdateIncorrect] = useState(0);
     const [isGameOver, UpdateGameOver] = useState(false);
 
+
    return (
-       <div className="border p-1 m-1 bg-info">
+       <div className="border p-1 m-1">
            <h4>Object Match Game Component</h4>
            <InstructionsComponent />
            <DisplayComponent
                 Objects={objects}
                 UsedObjects={usedObjects}
                 AvailObjects={availObjects}
+                SelectedObject={selectedObject}
                 IsGameOver={isGameOver} />
 
                 <div className="row">
@@ -120,14 +181,20 @@ const ObjectMatchGameComponent = (props) =>
                     {
                         !isGameOver
                             ? <ObjectComponent
+                                key={selectedObject.Name}
                                 AllObjects={objects}
                                 AvailObjects={availObjects}
-                                UseCurrentObjectRef={UseCurrentObject} />
+                                Object={selectedObject}
+                                PossibleMatches={possibleMatches}
+                                UpdateScoreRef={UpdateScore}
+                                GetNextObjectRef={GetNextObject}
+                                //ProcessAnswerRef={ProcessAnswer}
+                                />
                             : <GameOverComponent />
                     }
                     </div>
                     <div className="col-6">
-                        <ScoreComponent />
+                        <ScoreComponent Correct={correct} Incorrect={incorrect} />
                     </div>
                 </div>
            <ResetAppComponent ResetAppRef={props.ResetAppRef} />

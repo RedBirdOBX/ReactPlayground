@@ -1,27 +1,49 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const MatchComponent = (props) =>
 {
 
+    // GOAL: Alter the button or div when selected
+    console.log("match rendered for " + props.Answer);
+    // THIS IS RENDERED with each click
+
+
+    let isCorrect = "";
+
     const ProcessAnswer = (answer) =>
     {
-        console.log("selecting " + answer);
-
         if (answer === props.Object.Match)
         {
-            console.log("Correct!");
+            isCorrect = "correct";
+            UpdateButtonTextColor("green");
         }
         else
         {
-            console.log("Incorrect!");
+            isCorrect = "incorrect";
+            UpdateButtonTextColor("red");
         }
+        props.UpdateScoreRef(isCorrect);
     };
+
+    const [buttonTextColor, UpdateButtonTextColor] = useState("black");
 
    return (
        <div className="border p-1 m-1 bg-white">
-           {props.Answer}<br />
+           <h4>Match Component</h4>
+           <strong>**{props.Answer}**</strong><br />
            <small>(correct answer {props.Object.Match})</small><br />
-           <button onClick={()=> { ProcessAnswer(props.Answer)} } >Select This Answer</button>
+           <button
+                onClick={()=> { ProcessAnswer(props.Answer)} }
+                style={
+                    {
+                        color: buttonTextColor,
+
+                        // not working but right idea....
+                        disabled: (isCorrect === "") ? "" : "disabled"
+                    }}
+                >
+                Select This Answer
+            </button>
         </div>
    );
 };

@@ -11,9 +11,10 @@ const InstructionsComponent = (props) =>
                     <li>Create a list of all objects and show in display. DONE</li>
                     <li>Create a list of avail objects and store in state. Show in Display. DONE</li>
                     <li>Create a list of used objects and store in state. Show in display. DONE</li>
-                    <li>WIP - Object Component. Pick a random object from avail objects. Add it to used objects which is in state. Show in UI.</li>
-                    <li>WIP - Build 4 possible choices from selected object. Show in UI.</li>
+                    <li>Object Component. Pick a random object from avail objects. Add it to used objects which is in state. Show in UI. DONE</li>
+                    <li>Build 4 possible choices from selected object. Show in UI. DONE</li>
                     <li>Build out Scoring</li>
+                    <li>Disable match when selected</li>
                 </ol>
                 <p>Instructions:</p>
                 <p>
