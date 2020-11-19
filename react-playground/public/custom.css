@@ -119,3 +119,20 @@ ol, ul {
 {
     background-color: rgb(228, 204, 204);
 }
+
+
+.btn-disable-incorrect
+{
+    cursor: not-allowed;
+    pointer-events: none;
+    color: #ff0000;
+    /* background-color: #ffffff; */
+}
+
+.btn-disable-correct
+{
+    cursor: not-allowed;
+    pointer-events: none;
+    color: green;
+    /* background-color: #ffffff; */
+}

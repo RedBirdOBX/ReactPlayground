@@ -8,7 +8,7 @@ const ObjectComponent = (props) =>
        <div className="border m-1 p-1 bg-white">
            <h4>Object Component</h4>
            <div>
-               Selected: {props.Object.Name}
+               <h5>Selected: {props.Object.Name}</h5>
            </div>
            <div>
                <MatchListComponent

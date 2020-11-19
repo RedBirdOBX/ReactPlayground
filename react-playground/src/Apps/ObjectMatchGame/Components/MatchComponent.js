@@ -9,6 +9,7 @@ const MatchComponent = (props) =>
 
 
     let isCorrect = "";
+    //let buttonStyle = "";
 
     const ProcessAnswer = (answer) =>
     {
@@ -16,31 +17,30 @@ const MatchComponent = (props) =>
         {
             isCorrect = "correct";
             UpdateButtonTextColor("green");
+            UpdateButtonStyle("btn-disable-correct");
         }
         else
         {
             isCorrect = "incorrect";
             UpdateButtonTextColor("red");
+            UpdateButtonStyle("btn-disable-incorrect");
+            //isDisabled="disabled";
+            //console.log(isDisabled);
         }
         props.UpdateScoreRef(isCorrect);
     };
 
     const [buttonTextColor, UpdateButtonTextColor] = useState("black");
+    const [buttonStyle, UpdateButtonStyle] = useState("");
 
    return (
        <div className="border p-1 m-1 bg-white">
            <h4>Match Component</h4>
-           <strong>**{props.Answer}**</strong><br />
-           <small>(correct answer {props.Object.Match})</small><br />
+           {props.Answer}<br />
+           {/* <small>(correct answer {props.Object.Match})</small><br /> */}
            <button
                 onClick={()=> { ProcessAnswer(props.Answer)} }
-                style={
-                    {
-                        color: buttonTextColor,
-
-                        // not working but right idea....
-                        disabled: (isCorrect === "") ? "" : "disabled"
-                    }}
+                    className={buttonStyle}
                 >
                 Select This Answer
             </button>
