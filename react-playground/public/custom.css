@@ -87,52 +87,51 @@ ol, ul {
   }
 
 
-  /* Author Quiz Styles */
-/* .turn > div
+/* Object Match Game */
+.ObjectImage
 {
-    height: 400px;
-} */
-
-.turn
-{
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.authorimage
-{
-    max-height: 300px;
+    max-height: 250px;
     max-width: 100%;
 }
 
-.answer
+.answerNative
 {
     background-color: rgb(233, 233, 233);
     border-color: #b89d9d;
-    margin-bottom: 20px;
-    padding: 15px 30px 15px 15px;
+    margin-bottom: 10px;
+    padding: 10px 15px 10px 15px;
     border-left: 5px solid #b89d9d;
     cursor: pointer;
 }
 
-.answer:hover
+.answerNative:hover
 {
     background-color: rgb(228, 204, 204);
 }
 
-
-.btn-disable-incorrect
+.answerCorrect
 {
-    cursor: not-allowed;
-    pointer-events: none;
-    color: #ff0000;
-    /* background-color: #ffffff; */
+    background-color: rgb(0, 155, 39);
+    border-color: #012500;
+    color: #fff;
+    margin-bottom: 10px;
+    padding: 10px 15px 10px 15px;
+    border-left: 5px solid #012500;
 }
 
-.btn-disable-correct
+.answerIncorrect
 {
-    cursor: not-allowed;
-    pointer-events: none;
-    color: green;
-    /* background-color: #ffffff; */
+    background-color: rgb(155, 0, 0);
+    border-color: #530600;
+    color: #fff;
+    margin-bottom: 10px;
+    padding: 10px 15px 10px 15px;
+    border-left: 5px solid #530600;
 }
+
+.answerCorrect:hover, .answerIncorrect:hover
+{
+    cursor: not-allowed !important;
+    pointer-events: none;
+}
+

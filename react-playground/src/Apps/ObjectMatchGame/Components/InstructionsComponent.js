@@ -3,13 +3,20 @@ import React from 'react';
 const InstructionsComponent = (props) =>
 {
    return (
-       <div className="border p-1 m-1 bg-white">
-           <h4>Instructions Component</h4>
-            <div className="jumbotron">
-                <p>
-                    Look at the current selected object and then select the one of four possible matches that matches the object.
-                </p>
-            </div>
+       <div className="p-1">
+           <div className="card text-white bg-dark mb-3">
+               <div className="card-body">
+                   <h3 className="card-title text-center">{props.ObjectsName} and {props.MatchesName} Match Game</h3>
+                   <p className="card-text">
+                        Select the correct {props.MatchesName.toLowerCase().substring(0, props.MatchesName.length - 1)} which the&nbsp;
+                        {props.ObjectsName.toLowerCase().substring(0, props.ObjectsName.length - 1)} wrote. Try to get to the end of the game without
+                        any incorrect answers.
+                    </p>
+                    <p>
+                       There are <strong>{props.ObjectCount}</strong> possible {props.ObjectsName.toLowerCase()} in this game.
+                    </p>
+               </div>
+           </div>
        </div>
    );
 };

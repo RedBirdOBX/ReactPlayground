@@ -2,6 +2,9 @@ import React from 'react';
 
 const DisplayComponent = (props) =>
 {
+
+    // Mainly for testing and debugging.        //
+
     let allObjectsHtml = "";
     let availObjectsHtml = "";
     let usedObjectsHtml = "";
@@ -16,7 +19,7 @@ const DisplayComponent = (props) =>
     BuildTempDisplayData();
 
    return (
-       <div className="border m-1 p-1 bg-white">
+       <div className="d-none">
            <h4>Display Component</h4>
            <div>
                All objects: {allObjectsHtml}<br />

@@ -10,7 +10,11 @@ import { shuffle, sample, all } from 'underscore';
 
 const ObjectMatchGameComponent = (props) =>
 {
-    // App Data
+    // App Data                                     //
+    // Possibly load this from a json file...       //
+    // make this a single object and spread it?
+    const objectsName = "Authors";
+    const matchesName = "Books";
     const objects =
     [
         {
@@ -92,6 +96,9 @@ const ObjectMatchGameComponent = (props) =>
             let newObject = sample(newAvailObjects);
             UpdateSelectedObject(newObject);
             UpdatePossibleMatches(BuildPossibleMatches(newObject));
+
+            // set counter
+            UpdateObjectCounter(objectCounter+1);
         }
         else
         {
@@ -137,25 +144,6 @@ const ObjectMatchGameComponent = (props) =>
         }
     };
 
-    // const ProcessAnswer = (answer) =>
-    // {
-
-
-    //     let isCorrect = "";
-    //     if (answer === selectedObject.Match)
-    //     {
-    //         isCorrect = "correct";
-    //     }
-    //     else
-    //     {
-    //         isCorrect = "incorrect";
-    //     }
-
-    //     //props.UpdateScoreRef(isCorrect);
-    //     console.log(isCorrect);
-    //     console.log(answer);
-    // };
-
     const [usedObjects, UpdateUsedObjects] = useState([]);
     const [availObjects, UpdateAvailObjects] = useState(objects);
     const [selectedObject, UpdateSelectedObject] = useState(sample(availObjects));
@@ -163,12 +151,12 @@ const ObjectMatchGameComponent = (props) =>
     const [correct, UpdateCorrect] = useState(0);
     const [incorrect, UpdateIncorrect] = useState(0);
     const [isGameOver, UpdateGameOver] = useState(false);
-
+    const [objectCounter, UpdateObjectCounter] = useState(1);
 
    return (
-       <div className="border p-1 m-1">
-           <h4>Object Match Game Component</h4>
-           <InstructionsComponent />
+       <div>
+           <InstructionsComponent ObjectsName={objectsName} MatchesName={matchesName} ObjectCount={objects.length} />
+
            <DisplayComponent
                 Objects={objects}
                 UsedObjects={usedObjects}
@@ -176,7 +164,7 @@ const ObjectMatchGameComponent = (props) =>
                 SelectedObject={selectedObject}
                 IsGameOver={isGameOver} />
 
-                <div className="row">
+            <div className="row">
                     <div className="col-6">
                     {
                         !isGameOver
@@ -188,16 +176,17 @@ const ObjectMatchGameComponent = (props) =>
                                 PossibleMatches={possibleMatches}
                                 UpdateScoreRef={UpdateScore}
                                 GetNextObjectRef={GetNextObject}
-                                //ProcessAnswerRef={ProcessAnswer}
-                                />
+                                ObjectsName={objectsName}
+                                MatchesName={matchesName}
+                                Counter={objectCounter} />
                             : <GameOverComponent />
                     }
                     </div>
                     <div className="col-6">
                         <ScoreComponent Correct={correct} Incorrect={incorrect} />
+                        <ResetAppComponent ResetAppRef={props.ResetAppRef} />
                     </div>
                 </div>
-           <ResetAppComponent ResetAppRef={props.ResetAppRef} />
        </div>
    );
 };

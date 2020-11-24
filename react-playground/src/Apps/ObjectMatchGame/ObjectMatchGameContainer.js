@@ -22,9 +22,8 @@ const ObjectMatchGameContainer = (props) =>
     };
 
    return (
-       <div className="border p-1 m-1">
-           <h4>Object Match Game Container</h4>
-           <div className="text-center text-danger">appId: {appId}</div>
+       <div>
+           <div className="d-none text-center text-danger">appId: {appId}</div>
            <ObjectMatchGameComponent key={appId} ResetAppRef={ResetApp} />
        </div>
    );
