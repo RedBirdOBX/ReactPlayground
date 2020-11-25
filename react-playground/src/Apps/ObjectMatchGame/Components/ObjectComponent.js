@@ -1,5 +1,6 @@
 import React from 'react';
 import MatchListComponent from './MatchListComponent';
+import PropTypes from 'prop-types';
 
 
 const ObjectComponent = (props) =>
@@ -29,5 +30,18 @@ const ObjectComponent = (props) =>
         </div>
    );
 };
+
+ObjectComponent.propTypes =
+{
+    AllObjects: PropTypes.array.isRequired,
+    AvailObjects: PropTypes.array.isRequired,
+    Object: PropTypes.object.isRequired,
+    PossibleMatches: PropTypes.array.isRequired,
+    UpdateScoreRef: PropTypes.func.isRequired,
+    GetNextObjectRef: PropTypes.func.isRequired,
+    ObjectsName: PropTypes.string.isRequired,
+    MatchesName: PropTypes.string.isRequired,
+    Counter: PropTypes.number.isRequired
+}
 
 export default ObjectComponent;

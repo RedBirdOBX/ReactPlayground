@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ResetAppGame = (props) =>
 {
@@ -10,5 +11,10 @@ const ResetAppGame = (props) =>
         </div>
    );
 };
+
+ResetAppGame.propTypes =
+{
+    ResetAppRef: PropTypes.func.isRequired
+}
 
 export default ResetAppGame;

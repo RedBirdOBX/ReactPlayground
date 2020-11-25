@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const InstructionsComponent = (props) =>
 {
@@ -20,5 +21,11 @@ const InstructionsComponent = (props) =>
        </div>
    );
 };
+
+InstructionsComponent.propTypes =
+{
+    MatchesName: PropTypes.string.isRequired,
+    ObjectsName: PropTypes.string.isRequired
+}
 
 export default InstructionsComponent;

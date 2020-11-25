@@ -1,5 +1,6 @@
 import React from 'react';
 import ResetGameComponent from './ResetGameComponent';
+import PropTypes from 'prop-types';
 
 const GameOverComponent = (props) =>
 {
@@ -31,5 +32,11 @@ const GameOverComponent = (props) =>
         </div>
    );
 };
+
+GameOverComponent.propTypes =
+{
+    Correct: PropTypes.number.isRequired,
+    Incorrect: PropTypes.number.isRequired
+}
 
 export default GameOverComponent;

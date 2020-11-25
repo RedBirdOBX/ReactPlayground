@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const DisplayComponent = (props) =>
 {
@@ -30,5 +31,12 @@ const DisplayComponent = (props) =>
        </div>
    );
 };
+
+DisplayComponent.propTypes =
+{
+    Objects: PropTypes.array.isRequired,
+    AvailObjects: PropTypes.array.isRequired,
+    UsedObjects: PropTypes.array.isRequired
+}
 
 export default DisplayComponent;

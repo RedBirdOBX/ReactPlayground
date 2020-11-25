@@ -5,68 +5,11 @@ import ObjectComponent from './ObjectComponent';
 import GameOverComponent from './GameOverComponent';
 import ScoreComponent from './ScoreComponent';
 import { shuffle, sample, all } from 'underscore';
-
+import objectData from '../Data/AuthorObjectData';
+import PropTypes from 'prop-types';
 
 const ObjectMatchGameComponent = (props) =>
 {
-    // TODO:
-    // App Data                                     //
-    // Possibly load this from a json file...       //
-    // make this a single object and spread it?
-    const objectsName = "Authors";
-    const matchesName = "Books";
-    const objects =
-    [
-        {
-            "Id": 1,
-            "Name": "Mark Twain",
-            "ImageUrl": "Images/Authors/mark-twain.jpg",
-            "Match": "The Adventures of Huckleberry Finn"
-        },
-        {
-            "Id": 2,
-            "Name": "Joseph Conrad",
-            "ImageUrl": "Images/Authors/joseph-conrad.jpg",
-            "Match": "Heart of Darkness"
-        },
-        {
-            "Id": 3,
-            "Name": "J.K Rowling",
-            "ImageUrl": "Images/Authors/jk-rowling.jpg",
-            "Match": "Harry Potter and the Sorcerers Stone"
-        },
-        {
-            "Id": 4,
-            "Name": "Stephen King",
-            "ImageUrl": "Images/Authors/stephen-king.jpg",
-            "Match": "The Shining"
-        },
-        {
-            "Id": 5,
-            "Name": "William Shakespeare",
-            "ImageUrl": "Images/Authors/william-shakespeare.jpg",
-            "Match": "Hamlet"
-        },
-        {
-            "Id": 6,
-            "Name": "Arthur C Clarke",
-            "ImageUrl": "Images/Authors/arthur-c-clarke.jpg",
-            "Match": "Rendevous with Rama"
-        },
-        {
-            "Id": 7,
-            "Name": "Neal Stevenson",
-            "ImageUrl": "Images/Authors/neal-stevenson.jpg",
-            "Match": "SevenEves"
-        },
-        {
-            "Id": 8,
-            "Name": "Isaac Asimov",
-            "ImageUrl": "Images/Authors/isaac-asimov.jpg",
-            "Match": "I, Robot"
-        }
-    ];
-
     const GetNextObject = (obj) =>
     {
         // add to used
@@ -76,7 +19,7 @@ const ObjectMatchGameComponent = (props) =>
         UpdateUsedObjects(newUsedObjects);
 
         // remove from avail
-        if (newUsedObjects.length < objects.length)
+        if (newUsedObjects.length < objectData.objects.length)
         {
             // recreate the avail objects
             let newAvailObjects = [];
@@ -116,7 +59,7 @@ const ObjectMatchGameComponent = (props) =>
         possibleMatches.push(object.Match)
 
         // find 3 other matches which will be wrong
-        objects.forEach(o =>
+        objectData.objects.forEach(o =>
         {
             if (o.Match !== object.Match)
             {
@@ -145,7 +88,7 @@ const ObjectMatchGameComponent = (props) =>
     };
 
     const [usedObjects, UpdateUsedObjects] = useState([]);
-    const [availObjects, UpdateAvailObjects] = useState(objects);
+    const [availObjects, UpdateAvailObjects] = useState(objectData.objects);
     const [selectedObject, UpdateSelectedObject] = useState(sample(availObjects));
     const [possibleMatches, UpdatePossibleMatches] = useState(BuildPossibleMatches(selectedObject));
     const [correct, UpdateCorrect] = useState(0);
@@ -155,10 +98,10 @@ const ObjectMatchGameComponent = (props) =>
 
    return (
        <div>
-           <InstructionsComponent ObjectsName={objectsName} MatchesName={matchesName} ObjectCount={objects.length} />
+           <InstructionsComponent ObjectsName={objectData.objectsName} MatchesName={objectData.matchesName} ObjectCount={objectData.objects.length} />
 
            <DisplayComponent
-                Objects={objects}
+                Objects={objectData.objects}
                 UsedObjects={usedObjects}
                 AvailObjects={availObjects}
                 SelectedObject={selectedObject}
@@ -170,14 +113,14 @@ const ObjectMatchGameComponent = (props) =>
                         !isGameOver
                             ? <ObjectComponent
                                 key={selectedObject.Name}
-                                AllObjects={objects}
+                                AllObjects={objectData.objects}
                                 AvailObjects={availObjects}
                                 Object={selectedObject}
                                 PossibleMatches={possibleMatches}
                                 UpdateScoreRef={UpdateScore}
                                 GetNextObjectRef={GetNextObject}
-                                ObjectsName={objectsName}
-                                MatchesName={matchesName}
+                                ObjectsName={objectData.objectsName}
+                                MatchesName={objectData.matchesName}
                                 Counter={objectCounter} />
                            : <GameOverComponent Correct={correct} Incorrect={incorrect} ResetAppRef={props.ResetAppRef} />
                     }
@@ -189,5 +132,10 @@ const ObjectMatchGameComponent = (props) =>
        </div>
    );
 };
+
+ObjectMatchGameComponent.propTypes =
+{
+    ResetAppRef: PropTypes.func.isRequired
+}
 
 export default ObjectMatchGameComponent;

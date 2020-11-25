@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
 const MatchComponent = (props) =>
 {
@@ -44,9 +45,7 @@ const MatchComponent = (props) =>
         return answer;
     };
 
-
     const [answerStyle, UpdateAnswerStyle] = useState("answerNative");
-    const [buttonStyle, UpdateButtonStyle] = useState("");
 
    return (
        <div className={answerStyle} onClick={() => ProcessAnswer(props.Answer) }>
@@ -58,5 +57,10 @@ const MatchComponent = (props) =>
         </div>
    );
 };
+
+MatchComponent.propTypes =
+{
+    Answer: PropTypes.string.isRequired
+}
 
 export default MatchComponent;
