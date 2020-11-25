@@ -1,6 +1,7 @@
 import React from 'react';
 import MatchListComponent from './MatchListComponent';
 
+
 const ObjectComponent = (props) =>
 {
    return (
@@ -19,7 +20,11 @@ const ObjectComponent = (props) =>
                         MatchesName={props.MatchesName}/>
                 </div>
             <div className="text-right">
-                <button className="btn btn-success" onClick={() => { props.GetNextObjectRef(props.Object); } }>Get Next Object</button>
+               <button className="btn btn-success"
+                        onClick={() => { props.GetNextObjectRef(props.Object); }}>
+                    Get Next { props.ObjectsName.substring(0, props.ObjectsName.length - 1) }
+                   <span className="ml-2 fa fa-chevron-right"></span>
+                </button>
             </div>
         </div>
    );

@@ -3,8 +3,6 @@ import MatchComponent from './MatchComponent';
 
 const MatchListComponent = (props) =>
 {
-    console.dir(props);
-
    return (
        <div className="my-1">
            <p className="text-center">

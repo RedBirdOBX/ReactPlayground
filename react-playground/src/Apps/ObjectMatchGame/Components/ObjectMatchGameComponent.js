@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import ResetAppComponent from './ResetAppComponent';
 import InstructionsComponent from './InstructionsComponent';
 import DisplayComponent from './DisplayComponent';
 import ObjectComponent from './ObjectComponent';
@@ -10,6 +9,7 @@ import { shuffle, sample, all } from 'underscore';
 
 const ObjectMatchGameComponent = (props) =>
 {
+    // TODO:
     // App Data                                     //
     // Possibly load this from a json file...       //
     // make this a single object and spread it?
@@ -179,12 +179,11 @@ const ObjectMatchGameComponent = (props) =>
                                 ObjectsName={objectsName}
                                 MatchesName={matchesName}
                                 Counter={objectCounter} />
-                            : <GameOverComponent />
+                           : <GameOverComponent Correct={correct} Incorrect={incorrect} ResetAppRef={props.ResetAppRef} />
                     }
                     </div>
                     <div className="col-6">
                         <ScoreComponent Correct={correct} Incorrect={incorrect} />
-                        <ResetAppComponent ResetAppRef={props.ResetAppRef} />
                     </div>
                 </div>
        </div>
