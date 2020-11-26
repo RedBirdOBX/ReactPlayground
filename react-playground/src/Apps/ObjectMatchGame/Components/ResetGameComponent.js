@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const ResetAppGame = (props) =>
 {
    return (
-       <div>
+        <div>
            <div className="text-center">
                <button className="btn btn-success" onClick={() => { props.ResetAppRef() }}>New Game ?</button>
            </div>

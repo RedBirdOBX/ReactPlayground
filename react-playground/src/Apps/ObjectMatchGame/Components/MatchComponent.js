@@ -48,13 +48,15 @@ const MatchComponent = (props) =>
     const [answerStyle, UpdateAnswerStyle] = useState("answerNative");
 
    return (
-       <div className={answerStyle} onClick={() => ProcessAnswer(props.Answer) }>
-           <h5>
-               {props.Answer}
-                <span className="fas fa-check mx-2 d-none" id={"correct-icon-" + BuildId(props.Answer)}></span>
-                <span className="fas fa-times mx-2 d-none" id={"incorrect-icon-" + BuildId(props.Answer)}></span>
-            </h5>
-        </div>
+       <div>
+            <div className={answerStyle} onClick={() => ProcessAnswer(props.Answer) }>
+            <h5>
+                {props.Answer}
+                    <span className="fas fa-check mx-2 d-none" id={"correct-icon-" + BuildId(props.Answer)}></span>
+                    <span className="fas fa-times mx-2 d-none" id={"incorrect-icon-" + BuildId(props.Answer)}></span>
+                </h5>
+            </div>
+       </div>
    );
 };
 

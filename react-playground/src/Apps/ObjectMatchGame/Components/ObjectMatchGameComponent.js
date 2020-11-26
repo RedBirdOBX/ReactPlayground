@@ -4,7 +4,7 @@ import DisplayComponent from './DisplayComponent';
 import ObjectComponent from './ObjectComponent';
 import GameOverComponent from './GameOverComponent';
 import ScoreComponent from './ScoreComponent';
-import { shuffle, sample, all } from 'underscore';
+import { shuffle, sample } from 'underscore';
 import objectData from '../Data/AuthorObjectData';
 import PropTypes from 'prop-types';
 
@@ -97,7 +97,7 @@ const ObjectMatchGameComponent = (props) =>
     const [objectCounter, UpdateObjectCounter] = useState(1);
 
    return (
-       <div>
+        <div>
            <InstructionsComponent ObjectsName={objectData.objectsName} MatchesName={objectData.matchesName} ObjectCount={objectData.objects.length} />
 
            <DisplayComponent
