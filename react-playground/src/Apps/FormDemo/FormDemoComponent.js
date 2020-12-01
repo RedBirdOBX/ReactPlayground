@@ -1,17 +1,9 @@
 import React, {useState} from 'react';
 
-const FormDemoComponent = (props) =>
+const FormDemoComponent = () =>
 {
-
     // Note: be sure to disable the custom form class in the custom.css file.
     // It overrides the default bootstrap styles.
-
-    //           <p>Notice that you cannot change the values of these form elements.</p>
-
-    // TODO:
-    // checkbox
-    // radio buttons
-
 
     const [textInput, SetTextInput] = useState("");
     const [textAreaInput, SetTextAreaInput] = useState("");
@@ -40,12 +32,10 @@ const FormDemoComponent = (props) =>
         SetRadioGroupInput(e.target.value);
     };
 
-
     return (
        <div className="container">
             <h3>Form Demo</h3>
             <form action="" onSubmit={FormSubmitHandler}>
-
                 <div className="form-group">
                     <label htmlFor="TextInput">Text Input</label>
                     <input id="TextInput"
@@ -56,7 +46,9 @@ const FormDemoComponent = (props) =>
                         onChange={(e) =>
                         {
                             SetTextInput(e.target.value);
-                        }}/>
+                            console.dir(e.target);
+                        }}
+                        />
                 </div>
 
                 <div className="form-group">
@@ -66,7 +58,8 @@ const FormDemoComponent = (props) =>
                         className="form-control"
                         rows="3"
                         value={textAreaInput}
-                        onChange={(e) => {
+                        onChange={(e) => 
+                            {
                             SetTextAreaInput(e.target.value);
                         }}
                     />
@@ -95,11 +88,9 @@ const FormDemoComponent = (props) =>
                             value={checkboxInput}
                             onChange={(e) =>
                             {
-                                // this deserves exploring...
                                 SetCheckboxInput(e.target.checked);
-                                //console.log(e.target.value);
-                                //console.dir(e.target);
-                            }} />
+                            }} 
+                        />
                     <label className="form-check-label" htmlFor="DemoCheckbox">Checkbox</label>
                 </div>
 
@@ -116,7 +107,7 @@ const FormDemoComponent = (props) =>
                                     SetRadioState(e);
                                 }}
                                 checked={radioGroupInput === "red"}
-                                />
+                            />
                         <label className="form-check-label" htmlFor="exampleRadios1">
                             Red
                         </label>
@@ -132,7 +123,7 @@ const FormDemoComponent = (props) =>
                                     SetRadioState(e);
                                 }}
                                 checked={radioGroupInput === "white"}
-                                />
+                            />
                         <label className="form-check-label" htmlFor="exampleRadios2">
                             White
                         </label>
@@ -148,7 +139,8 @@ const FormDemoComponent = (props) =>
                                     SetRadioState(e);
                                 }}
                                 checked={radioGroupInput === "blue"}
-                                disabled />
+                                disabled 
+                            />
                         <label className="form-check-label" htmlFor="exampleRadios3">
                             Blue (disabled)
                         </label>
