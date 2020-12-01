@@ -13,6 +13,8 @@ class Form extends React.Component
 
     HandleSubmit = async (event) =>
     {
+        console.log("**Form Submitted**");
+
         event.preventDefault();
 
         let apiUrl = `https://api.github.com/users/${this.state.UserName}`;
