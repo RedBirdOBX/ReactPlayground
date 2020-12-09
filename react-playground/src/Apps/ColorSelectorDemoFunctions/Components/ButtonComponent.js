@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = (props) =>
+const ButtonComponent = (props) =>
 {
     return (<span>
                 <button
@@ -12,4 +12,4 @@ const Button = (props) =>
             </span>);
 };
 
-export default Button;
+export default ButtonComponent;

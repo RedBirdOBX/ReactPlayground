@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
-import ButtonLists from "./Components/ButtonList";
-import Alert from "./Components/Alert";
+import ButtonListComponent from "./Components/ButtonListComponent";
+import AlertComponent from "./Components/AlertComponent";
 
 function AlertConfig(name, style, msg)
 {
@@ -12,8 +12,7 @@ function AlertConfig(name, style, msg)
 
 const defaultAlertConfig = new AlertConfig("Primary", "alert alert-primary", "Click the button to change this alert message to match the style of the button.");
 
-
-const ColorChanger = (props) =>
+const ColorSelectorDemoFunctionsApp = (props) =>
 {
     const [alertConfig, setAlertConfig] = useState(defaultAlertConfig);
     const UpdateAlertState = (btnConfig) =>
@@ -26,16 +25,16 @@ const ColorChanger = (props) =>
         <div>
             <div className="row my-5">
                 <div className="col-12 text-center">
-                    <ButtonLists ClickHandler={UpdateAlertState} />
+                    <ButtonListComponent ClickHandler={UpdateAlertState} />
                 </div>
             </div>
             <div className="row my-5">
                 <div className="col-12 text-center">
-                    <Alert Config={alertConfig} />
+                    <AlertComponent Config={alertConfig} />
                 </div>
             </div>
         </div>
     );
 };
 
-export default ColorChanger;
+export default ColorSelectorDemoFunctionsApp;

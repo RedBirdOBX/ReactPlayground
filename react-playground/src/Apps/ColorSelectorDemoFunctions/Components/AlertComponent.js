@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const Alert = (props) =>
+const AlertComponent = (props) =>
 {
 
     useEffect(() =>
@@ -18,4 +18,4 @@ const Alert = (props) =>
             </div>);
 };
 
-export default Alert;
+export default AlertComponent;

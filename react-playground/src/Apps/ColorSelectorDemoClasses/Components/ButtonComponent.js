@@ -1,18 +1,18 @@
 import React from 'react';
 
 
-class Button extends React.Component {
+class ButtonComponent extends React.Component {
 
     HandleButtonClick = () =>
     {
         this.props.BtnClickEvent(this.props.ButtonConfig.ButtonName);
     };
-    
-    render() 
+
+    render()
     {
         return (
         <span>
-                <button 
+                <button
                     onClick={this.HandleButtonClick} className={this.props.ButtonConfig.ButtonStyle} >
                     {this.props.ButtonConfig.ButtonName}
                 </button>
@@ -20,4 +20,4 @@ class Button extends React.Component {
     }
 }
 
-export default Button;
+export default ButtonComponent;

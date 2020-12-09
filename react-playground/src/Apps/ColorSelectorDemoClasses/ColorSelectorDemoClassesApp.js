@@ -1,9 +1,6 @@
-// Goal:
-//  4) Use Class Components for one version and Function Components for another.
-
 import React from 'react';
-import ButtonLists from './Components/ButtonList';
-import Alert from './Components/Alert';
+import ButtonListComponent from './Components/ButtonListComponent';
+import AlertComponent from './Components/AlertComponent';
 
 function AlertConfig(name, style, msg)
 {
@@ -15,7 +12,7 @@ function AlertConfig(name, style, msg)
 const defaultAlertConfig = new AlertConfig("Primary", "alert alert-primary", "Click the button to change this alert message to match the style of the button.");
 
 
-class ColorChanger extends React.Component
+class ColorSelectorDemoClassesApp extends React.Component
 {
     constructor()
     {
@@ -43,12 +40,12 @@ class ColorChanger extends React.Component
             <div>
                 <div className="row my-5">
                     <div className="col-12 text-center">
-                        <ButtonLists ClickHandler={this.UpdateAlertState} />
+                        <ButtonListComponent ClickHandler={this.UpdateAlertState} />
                     </div>
                 </div>
                 <div className="row my-5">
                     <div className="col-12 text-center">
-                        <Alert Config={this.state.AlertConfig} />
+                        <AlertComponent Config={this.state.AlertConfig} />
                     </div>
                 </div>
             </div>
@@ -56,4 +53,4 @@ class ColorChanger extends React.Component
     }
 }
 
-export default ColorChanger;
+export default ColorSelectorDemoClassesApp;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button';
+import ButtonComponent from './ButtonComponent';
 
 let primaryBtn = new ButtonConfig("Primary","btn btn-lg btn-primary");
 let secondaryBtn = new ButtonConfig("Secondary", "btn btn-lg btn-secondary");
@@ -19,19 +19,19 @@ function ButtonConfig (name, style)
     this.ButtonStyle = style;
 };
 
-class ButtonList extends React.Component
+class ButtonListComponent extends React.Component
 {
     render()
     {
         return (<div>
-                    { buttonConfigs.map(config => 
-                        <Button 
-                            BtnClickEvent={this.props.ClickHandler} 
-                            key={config.ButtonName} 
+                    { buttonConfigs.map(config =>
+                        <ButtonComponent
+                            BtnClickEvent={this.props.ClickHandler}
+                            key={config.ButtonName}
                             ButtonConfig={config} />)
                     }
                 </div>);
     }
 }
 
-export default ButtonList;
+export default ButtonListComponent;
