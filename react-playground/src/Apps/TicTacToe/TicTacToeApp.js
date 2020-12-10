@@ -1,7 +1,7 @@
 import React from 'react';
-import Board from './Components/Board';
+import BoardComponent from './Components/BoardComponent';
 
-class TicTacToeGame extends React.Component
+class TicTacToeApp extends React.Component
 {
     constructor(props)
     {
@@ -111,22 +111,23 @@ class TicTacToeGame extends React.Component
         }
 
         return (
-            <div className="game">
-                <div className="game-board">
-                    <Board
-                        squares={current.squares}
-                        OnSquareClick={(squareId) => this.SquareClickHandler(squareId)}
-                    />
-                </div>
-                <div className="game-info">
-                    <div>{status}</div>
-                    <ol>{moves}</ol>
+            <div className="mt-3">
+                <h4 className="pb-5">Tic Tac Toe App</h4>
+                <div className="game">
+                    <div className="game-board">
+                        <BoardComponent
+                            squares={current.squares}
+                            OnSquareClick={(squareId) => this.SquareClickHandler(squareId)}
+                        />
+                    </div>
+                    <div className="game-info">
+                        <div>{status}</div>
+                        <ol>{moves}</ol>
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-export default TicTacToeGame;
-
-
+export default TicTacToeApp;

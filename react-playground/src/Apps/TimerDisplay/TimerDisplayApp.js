@@ -1,12 +1,15 @@
 import React from 'react';
-import TimeDisplay from './Components/TimeDisplay';
+import TimeDisplayComponent from './Components/TimeDisplayComponent';
 
 class TimerDisplayApp extends React.Component
 {
     render()
     {
         return(
-            <div className="pt-5"><TimeDisplay /></div>
+            <div className="mt-3">
+                <h4>Timer Display App</h4>
+                <TimeDisplayComponent />
+            </div>
         );
     }
 }

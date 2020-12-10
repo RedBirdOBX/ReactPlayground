@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from './Components/Button';
-import Results from './Components/Results';
-import Header from './Components/Header';
+import ButtonComponent from './Components/ButtonComponent';
+import DisplayComponent from './Components/DisplayComponent';
+import HeaderComponent from './Components/HeaderComponent';
 
 class CounterButtonApp extends React.Component
 {
@@ -29,18 +29,21 @@ class CounterButtonApp extends React.Component
     render()
     {
         return(
-                <div className="row">
+            <div className="mt-3">
+                <h4>Counter Button App</h4>
+                <div className="row mt-5">
                     <div className="col-12 text-center">
-                        <Header />
-                        <Button Incrementor={1} OnClickHandler={this.SetCounter} />
-                        <Button Incrementor={5} OnClickHandler={this.SetCounter} />
-                        <Button Incrementor={10} OnClickHandler={this.SetCounter} />
-                        <Button Incrementor={25} OnClickHandler={this.SetCounter} />
-                        <Button Incrementor={100} OnClickHandler={this.SetCounter} />
-                        <Results CounterVal={this.state.Counter} />
+                        <HeaderComponent />
+                        <ButtonComponent Incrementor={1} OnClickHandler={this.SetCounter} />
+                        <ButtonComponent Incrementor={5} OnClickHandler={this.SetCounter} />
+                        <ButtonComponent Incrementor={10} OnClickHandler={this.SetCounter} />
+                        <ButtonComponent Incrementor={25} OnClickHandler={this.SetCounter} />
+                        <ButtonComponent Incrementor={100} OnClickHandler={this.SetCounter} />
+                        <DisplayComponent CounterVal={this.state.Counter} />
                     </div>
                 </div>
-                );
+            </div>
+            );
     }
 }
 

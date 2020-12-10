@@ -1,9 +1,11 @@
 import React from 'react';
 
-class ProfileCard extends React.Component
+class ProfileCardComponent extends React.Component
 {
     render()
     {
+        console.dir(this.props);
+
         return (
             <div className="github-profile">
                 <img src={this.props.avatar_url} />
@@ -11,10 +13,10 @@ class ProfileCard extends React.Component
                     <div className="name">{this.props.name}</div>
                     <div className="txt">{this.props.company}</div>
                     <div className="txt">{this.props.location}</div>
+                    <div><a href={this.props.url} target="_blank">{this.props.url}</a></div>
                 </div>
             </div>);
     }
 }
 
-
-export default ProfileCard;
+export default ProfileCardComponent;

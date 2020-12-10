@@ -37,7 +37,8 @@ class ColorSelectorDemoClassesApp extends React.Component
 
     render() {
         return (
-            <div>
+            <div className="mt-3">
+                <h4>Color Selector Demo App using Class Components</h4>
                 <div className="row my-5">
                     <div className="col-12 text-center">
                         <ButtonListComponent ClickHandler={this.UpdateAlertState} />

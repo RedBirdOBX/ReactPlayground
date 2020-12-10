@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './Components/Header';
-import Form from './Components/Form';
-import CardList from './Components/CardList';
+import HeaderComponent from './Components/HeaderComponent';
+import FormComponent from './Components/FormComponent';
+import CardListComponent from './Components/CardListComponent';
 
 // NOTES:
 // This app has two state objects.
@@ -96,9 +96,9 @@ class GitHubCardApp extends React.Component
     {
         return(
             <div>
-                <Header Title={"The GitHub Profiles App"} />
-                <Form OnSubmitRef={this.AddNewProfile} />
-                <CardList Profiles={this.state.Profiles} />
+                <HeaderComponent Title={"The GitHub Profiles App"} />
+                <FormComponent OnSubmitRef={this.AddNewProfile} />
+                <CardListComponent Profiles={this.state.Profiles} />
             </div>
         );
     }

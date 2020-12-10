@@ -1,19 +1,22 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
+// do something with this
 import logo from './logo.svg';
 import './App.css';
 
 import ColorSelectorDemoClassesApp from './Apps/ColorSelectorDemoClasses/ColorSelectorDemoClassesApp';
 import ColorSelectorDemoFunctionsApp from './Apps/ColorSelectorDemoFunctions/ColorSelectorDemoFunctionsApp';
+import GitHubCardsApp from './Apps/GitHubCards/GitHubCardsApp';
+import CounterButtonApp from './Apps/CounterButton/CounterButtonApp';
+import TimerDisplayApp from './Apps/TimerDisplay/TimerDisplayApp';
+import TicTacToeApp from './Apps/TicTacToe/TicTacToeApp';
+
 
 // import ObjectMatchGameContainer from './Apps/ObjectMatchGame/ObjectMatchGameContainer';
-// import CounterButtonApp from './Apps/CounterButton/CounterButtonApp';
-// import TimerDisplayApp from './Apps/TimerDisplay/TimerDisplayApp';
-// import GitHubCardApp from './Apps/GitHubCards/GitHubCardApp';
 // import LoopImages from './Apps/LoopImages/LoopImages';
 // import CaptureInputValueApp from './Apps/CapturingInputValue/CaptureInputValueApp';
-// import TicTacToeGame from './Apps/TicTacToe/TicTacToeGame';
+
 // import PropsValidationApp from './Apps/PropsValidation/PropsValidationApp';
 // import TestExampleApp from './Apps/TestComponentExample/TestExampleApp';
 // import EventExampleApp from './Apps/EventExample/EventExampleApp';
@@ -43,10 +46,10 @@ function App()
                 <div className="collapse navbar-collapse" id="CollapseContainer">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a className="nav-link dropdown-toggle" href="#" id="DemoAppsDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Demo Apps
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div className="dropdown-menu" aria-labelledby="DemoAppsDropDown">
                                 <Link className="dropdown-item" to="/ColorSelectorDemoClassesApp">
                                         Color Selector Class Demo
                                 </Link>
@@ -54,9 +57,27 @@ function App()
                                 <Link className="dropdown-item" to="/ColorSelectorDemoFunctionsApp">
                                         Color Selector Function Demo
                                 </Link>
+                                <Link className="dropdown-item" to="/CounterButtonApp">
+                                    Counter Button App
+                                </Link>
+                                <Link className="dropdown-item" to="/TimerDisplayApp">
+                                    Timer Display App
+                                </Link>
                             </div>
                         </li>
-
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="#" id="FullAppsDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Full Apps
+                            </a>
+                            <div className="dropdown-menu" aria-labelledby="DemoAppsDropDown">
+                                <Link className="dropdown-item" to="/GitHubCardsApp">
+                                    GitHub Cards App
+                                </Link>
+                                <Link className="dropdown-item" to="/TicTacToeApp">
+                                    Tic Tac Toe App
+                                </Link>
+                            </div>
+                        </li>
 
                         {/* <li className="nav-item">
                             <Link className="nav-link" to="/GitHubCardApp">GitHubCardApp</Link>
@@ -128,13 +149,14 @@ function App()
             <Route exact path="/" component={Overview} />
             <Route exact path="/ColorSelectorDemoClassesApp" component={ColorSelectorDemoClassesApp} />
             <Route exact path="/ColorSelectorDemoFunctionsApp" component={ColorSelectorDemoFunctionsApp} />
-
-            {/* <Route exact path="/GitHubCardApp" component={GitHubCardApp} />
-            <Route exact path="/TicTacToeGame" component={TicTacToeGame} />
-            <Route exact path="/TicTacToeGame" component={TicTacToeGame} />
-            <Route exact path="/ObjectMatchGameContainer" component={ObjectMatchGameContainer} />
+            <Route exact path="/GitHubCardsApp" component={GitHubCardsApp} />
             <Route exact path="/CounterButtonApp" component={CounterButtonApp} />
             <Route exact path="/TimerDisplayApp" component={TimerDisplayApp} />
+            <Route exact path="/TicTacToeApp" component={TicTacToeApp} />
+
+            {/*
+
+            <Route exact path="/ObjectMatchGameContainer" component={ObjectMatchGameContainer} />
             <Route exact path="/LoopImages" component={LoopImages} />
             <Route exact path="/CaptureInputValueApp" component={CaptureInputValueApp} />
             <Route exact path="/PropsValidationApp" component={PropsValidationApp} />
