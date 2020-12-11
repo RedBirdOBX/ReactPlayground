@@ -1,7 +1,7 @@
 import React from 'react';
 import EarthImg from './earth.jpg';
 
-class Image extends React.Component
+class ImageComponent extends React.Component
 {
     render()
     {
@@ -10,4 +10,4 @@ class Image extends React.Component
 
 }
 
-export default Image;
+export default ImageComponent;

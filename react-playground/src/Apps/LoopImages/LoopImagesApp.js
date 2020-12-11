@@ -1,7 +1,7 @@
 // challenge:  lopp thru a predefined number of interations and render img controls.
 
 import React from 'react';
-import Image from './Image';
+import ImageComponent from './ImageComponent';
 
 const loops = 3;
 let images = [];
@@ -10,7 +10,7 @@ let images = [];
 // 1) use a for loop for one version - done
 for (let index = 1; index <= loops; index++)
 {
-    images.push(<Image key={index} />)
+    images.push(<ImageComponent key={index} />)
 }
 
 
@@ -18,18 +18,21 @@ for (let index = 1; index <= loops; index++)
 let images2 = images.map((img) => { return img; });
 
 
-class LoopImages extends React.Component
+class LoopImagesApp extends React.Component
 {
     render()
     {
         return(
-            <div>
+            <div  className="mt-3">
+                <h4 className="m-3">Loop Images concept</h4>
                 {images}
-                <div className="m-3">&nbsp;</div>
+                <div className="m-3">
+                    <hr />
+                </div>
                 {images2}
             </div>
         );
     }
 }
 
-export default LoopImages;
+export default LoopImagesApp;

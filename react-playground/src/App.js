@@ -5,19 +5,24 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
+// demos
 import ColorSelectorDemoClassesApp from './Apps/ColorSelectorDemoClasses/ColorSelectorDemoClassesApp';
 import ColorSelectorDemoFunctionsApp from './Apps/ColorSelectorDemoFunctions/ColorSelectorDemoFunctionsApp';
-import GitHubCardsApp from './Apps/GitHubCards/GitHubCardsApp';
 import CounterButtonApp from './Apps/CounterButton/CounterButtonApp';
 import TimerDisplayApp from './Apps/TimerDisplay/TimerDisplayApp';
+
+// full apps
+import GitHubCardsApp from './Apps/GitHubCards/GitHubCardsApp';
 import TicTacToeApp from './Apps/TicTacToe/TicTacToeApp';
+
+// concepts
+import LoopImagesApp from './Apps/LoopImages/LoopImagesApp';
+import CaptureInputValueApp from './Apps/CapturingInputValue/CaptureInputValueApp';
+import PropsValidationApp from './Apps/PropsValidation/PropsValidationApp';
 
 
 // import ObjectMatchGameContainer from './Apps/ObjectMatchGame/ObjectMatchGameContainer';
-// import LoopImages from './Apps/LoopImages/LoopImages';
-// import CaptureInputValueApp from './Apps/CapturingInputValue/CaptureInputValueApp';
 
-// import PropsValidationApp from './Apps/PropsValidation/PropsValidationApp';
 // import TestExampleApp from './Apps/TestComponentExample/TestExampleApp';
 // import EventExampleApp from './Apps/EventExample/EventExampleApp';
 // import MultiButtonsApp from './Apps/MultiButtons/MultiButtonsApp';
@@ -78,70 +83,22 @@ function App()
                                 </Link>
                             </div>
                         </li>
-
-                        {/* <li className="nav-item">
-                            <Link className="nav-link" to="/GitHubCardApp">GitHubCardApp</Link>
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="#" id="ConceptsDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Concepts
+                            </a>
+                            <div className="dropdown-menu" aria-labelledby="ConceptsDropDown">
+                                <Link className="dropdown-item" to="/LoopImagesApp">
+                                    Loop thru images
+                                </Link>
+                                <Link className="dropdown-item" to="/CaptureInputValueApp">
+                                    Capture Input value
+                                </Link>
+                                <Link className="dropdown-item" to="/PropsValidationApp">
+                                    Props validation
+                                </Link>
+                            </div>
                         </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/TicTacToeGame">TicTacToeGame</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/ObjectMatchGameContainer">ObjectMatchGameContainer</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/CounterButtonApp">CounterButtonApp</Link>
-                        </li> */}
-
-                        {/* <li className="nav-item">
-                            <Link className="nav-link" to="/TimerDisplayApp">TimerDisplayApp</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/LoopImages">LoopImages</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/CaptureInputValueApp">CaptureInputValueApp</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/PropsValidationApp">PropsValidationApp</Link>
-                        </li> */}
-
-                        {/* <li className="nav-item">
-                            <Link className="nav-link" to="/TestExampleApp">TestExampleApp</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/EventExampleApp">EventExampleApp</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/MultiButtonsApp">MultiButtonsApp</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/PropsChildrenExampleApp">PropsChildrenExampleApp</Link>
-                        </li> */}
-
-                        {/* <li className="nav-item">
-                            <Link className="nav-link" to="/StateExperimentComponent">StateExperimentComponent</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/UsedNumbersAppContainer">UsedNumbersAppContainer</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/FormDemoComponent">FormDemoComponent</Link>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/RoutingExampleComponent">RoutingExampleComponent</Link>
-                        </li> */}
                     </ul>
                 </div>
             </nav>
@@ -153,13 +110,14 @@ function App()
             <Route exact path="/CounterButtonApp" component={CounterButtonApp} />
             <Route exact path="/TimerDisplayApp" component={TimerDisplayApp} />
             <Route exact path="/TicTacToeApp" component={TicTacToeApp} />
+            <Route exact path="/LoopImagesApp" component={LoopImagesApp} />
+            <Route exact path="/CaptureInputValueApp" component={CaptureInputValueApp} />
+            <Route exact path="/PropsValidationApp" component={PropsValidationApp} />
+
 
             {/*
 
             <Route exact path="/ObjectMatchGameContainer" component={ObjectMatchGameContainer} />
-            <Route exact path="/LoopImages" component={LoopImages} />
-            <Route exact path="/CaptureInputValueApp" component={CaptureInputValueApp} />
-            <Route exact path="/PropsValidationApp" component={PropsValidationApp} />
             <Route exact path="/TestExampleApp" component={TestExampleApp} />
             <Route exact path="/EventExampleApp" component={EventExampleApp} />
             <Route exact path="/MultiButtonsApp" component={MultiButtonsApp} />

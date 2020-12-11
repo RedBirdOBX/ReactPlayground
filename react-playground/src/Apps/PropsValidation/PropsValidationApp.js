@@ -1,14 +1,15 @@
 import React from 'react';
-import Message from '../PropsValidation/Components/Message.js'
+import MessageComponent from '../PropsValidation/Components/MessageComponent.js';
 
 class PropsValidationApp extends React.Component
 {
     render()
     {
         return (
-            <div>
+            <div className="mt-3">
+                <h4>Props Validation</h4>
                 <div>
-                    <Message Greeting={'Hello World'} Pocket1={2} Pocket2={1} />
+                    <MessageComponent Greeting={'Whats in my pockets my precious?'} Pocket1={2} Pocket2={"1"} />
                 </div>
             </div>
         );

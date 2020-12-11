@@ -58,6 +58,34 @@ const Overview = () =>
                     </tr>
                 </tbody>
             </table>
+
+            <h4 className="mt-5">Concepts</h4>
+            <table className="table table-responsive table-sm my-2">
+                <tbody>
+                    <tr>
+                    <th scope="row">Loop Images</th>
+                    <td>
+                        Performs a limited loop and displays an image.  Once using traditional <code>for</code> and another using
+                        a more modern <code>map()</code>. Both are pushing each iteration into an <code>ImageComponent</code>.
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <th scope="row">Capturing Input</th>
+                    <td>
+                        Demonstrates 2 different ways to capture form input. One using State and one using a simple <code>createRef()</code>.
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <th scope="row">Props Validation</th>
+                    <td>
+                        Simple demo of validating the props data and types send into a component. The&nbsp;
+                        <strong>Object Match Game</strong> does this well.
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
        </div>
    );
 };
