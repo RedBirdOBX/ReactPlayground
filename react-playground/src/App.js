@@ -10,26 +10,25 @@ import ColorSelectorDemoClassesApp from './Apps/ColorSelectorDemoClasses/ColorSe
 import ColorSelectorDemoFunctionsApp from './Apps/ColorSelectorDemoFunctions/ColorSelectorDemoFunctionsApp';
 import CounterButtonApp from './Apps/CounterButton/CounterButtonApp';
 import TimerDisplayApp from './Apps/TimerDisplay/TimerDisplayApp';
+import MultiButtonsApp from './Apps/MultiButtons/MultiButtonsApp';
+import FormDemoApp from './Apps/FormDemo/FormDemoApp';
+import PropsChildrenExampleApp from './Apps/PropsChildrenExample/PropsChildrenExampleApp';
 
 // full apps
 import GitHubCardsApp from './Apps/GitHubCards/GitHubCardsApp';
 import TicTacToeApp from './Apps/TicTacToe/TicTacToeApp';
+import ObjectMatchGameApp from './Apps/ObjectMatchGame/ObjectMatchGameApp';
 
 // concepts
 import LoopImagesApp from './Apps/LoopImages/LoopImagesApp';
 import CaptureInputValueApp from './Apps/CapturingInputValue/CaptureInputValueApp';
 import PropsValidationApp from './Apps/PropsValidation/PropsValidationApp';
+import EventExampleApp from './Apps/EventExample/EventExampleApp';
+import UsedNumbersApp from './Apps/UsedNumberApp/UsedNumbersApp';
 
 
-// import ObjectMatchGameContainer from './Apps/ObjectMatchGame/ObjectMatchGameContainer';
 
-// import TestExampleApp from './Apps/TestComponentExample/TestExampleApp';
-// import EventExampleApp from './Apps/EventExample/EventExampleApp';
-// import MultiButtonsApp from './Apps/MultiButtons/MultiButtonsApp';
-// import PropsChildrenExampleApp from './Apps/PropsChildrenExample/PropsChildrenExampleApp';
 // import StateExperimentComponent from './Apps/StateExperimentApp/StateExperimentApp';
-// import UsedNumbersAppContainer from './Apps/UsedNumberApp/UsedNumbersAppContainer';
-// import FormDemoComponent from './Apps/FormDemo/FormDemoComponent';
 // import RoutingExampleComponent from './Apps/RoutingExample/RoutingExampleComponent';
 
 import Overview from './OverviewComponent';
@@ -56,17 +55,26 @@ function App()
                             </a>
                             <div className="dropdown-menu" aria-labelledby="DemoAppsDropDown">
                                 <Link className="dropdown-item" to="/ColorSelectorDemoClassesApp">
-                                        Color Selector Class Demo
+                                    Color Selector Class Demo
                                 </Link>
 
                                 <Link className="dropdown-item" to="/ColorSelectorDemoFunctionsApp">
-                                        Color Selector Function Demo
+                                    Color Selector Function Demo
                                 </Link>
                                 <Link className="dropdown-item" to="/CounterButtonApp">
                                     Counter Button App
                                 </Link>
                                 <Link className="dropdown-item" to="/TimerDisplayApp">
                                     Timer Display App
+                                </Link>
+                                <Link className="dropdown-item" to="/MultiButtonsApp">
+                                    Multi Buttons App
+                                </Link>
+                                <Link className="dropdown-item" to="/FormDemoApp">
+                                    Form Demo App
+                                </Link>
+                                <Link className="dropdown-item" to="/PropsChildrenExampleApp">
+                                    Props Children Example App
                                 </Link>
                             </div>
                         </li>
@@ -80,6 +88,9 @@ function App()
                                 </Link>
                                 <Link className="dropdown-item" to="/TicTacToeApp">
                                     Tic Tac Toe App
+                                </Link>
+                                <Link className="dropdown-item" to="/ObjectMatchGameApp">
+                                    Object Match Game App
                                 </Link>
                             </div>
                         </li>
@@ -97,6 +108,12 @@ function App()
                                 <Link className="dropdown-item" to="/PropsValidationApp">
                                     Props validation
                                 </Link>
+                                <Link className="dropdown-item" to="/EventExampleApp">
+                                    Event Example
+                                </Link>
+                                <Link className="dropdown-item" to="/UsedNumbersApp">
+                                    Used Numbers App
+                                </Link>
                             </div>
                         </li>
                     </ul>
@@ -113,18 +130,23 @@ function App()
             <Route exact path="/LoopImagesApp" component={LoopImagesApp} />
             <Route exact path="/CaptureInputValueApp" component={CaptureInputValueApp} />
             <Route exact path="/PropsValidationApp" component={PropsValidationApp} />
-
+            <Route exact path="/EventExampleApp" component={EventExampleApp} />
+            <Route exact path="/ObjectMatchGameApp" component={ObjectMatchGameApp} />
+            <Route exact path="/MultiButtonsApp" component={MultiButtonsApp} />
+            <Route exact path="/UsedNumbersApp" component={UsedNumbersApp} />
+            <Route exact path="/FormDemoApp" component={FormDemoApp} />
+            <Route exact path="/PropsChildrenExampleApp" component={PropsChildrenExampleApp} />
 
             {/*
 
-            <Route exact path="/ObjectMatchGameContainer" component={ObjectMatchGameContainer} />
-            <Route exact path="/TestExampleApp" component={TestExampleApp} />
-            <Route exact path="/EventExampleApp" component={EventExampleApp} />
-            <Route exact path="/MultiButtonsApp" component={MultiButtonsApp} />
-            <Route exact path="/PropsChildrenExampleApp" component={PropsChildrenExampleApp} />
+
+
+
+
+
             <Route exact path="/StateExperimentComponent" component={StateExperimentComponent} />
-            <Route exact path="/UsedNumbersAppContainer" component={UsedNumbersAppContainer} />
-            <Route exact path="/FormDemoComponent" component={FormDemoComponent} />
+
+
             <Route exact path="/RoutingExampleComponent" component={RoutingExampleComponent} /> */}
         </BrowserRouter>
     </div>

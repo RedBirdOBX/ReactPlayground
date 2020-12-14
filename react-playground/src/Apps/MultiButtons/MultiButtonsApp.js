@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import ButtonList from './Components/ButtonList'
-import Display from './Components/Display'
+import ButtonListComponent from './Components/ButtonListComponent'
+import DisplayComponent from './Components/DisplayComponent'
 
-const MultiButtonsApp = (props) =>
+const MultiButtonsApp = () =>
 {
     const defaultMsg = "Click a button!";
     const [selectedMsg, setSelectedMsg] = useState(defaultMsg);
@@ -17,15 +17,16 @@ const MultiButtonsApp = (props) =>
     };
 
     return (
-        <div>
+        <div className="mt-3">
+            <h4>Multi Button App</h4>
             <div className="row my-5">
                 <div className="col-12 text-center">
-                    <ButtonList BtnClickHandler={SetDisplay} />
+                    <ButtonListComponent BtnClickHandler={SetDisplay} />
                 </div>
             </div>
             <div className="row my-5">
                 <div className="col-12 text-center">
-                    <Display Message={selectedMsg} />
+                    <DisplayComponent Message={selectedMsg} />
                 </div>
             </div>
         </div>

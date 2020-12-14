@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import ObjectMatchGameComponent from './Components/ObjectMatchGameComponent';
 
-const ObjectMatchGameContainer = (props) =>
+const ObjectMatchGameApp = (props) =>
 {
     const [appId, ResetAppId] = useState(1);
     const ResetApp = () =>
@@ -18,4 +18,4 @@ const ObjectMatchGameContainer = (props) =>
    );
 };
 
-export default ObjectMatchGameContainer;
+export default ObjectMatchGameApp;

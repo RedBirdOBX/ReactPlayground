@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const FormDemoComponent = () =>
+const FormDemoApp = () =>
 {
     // Note: be sure to disable the custom form class in the custom.css file.
     // It overrides the default bootstrap styles.
@@ -58,7 +58,7 @@ const FormDemoComponent = () =>
                         className="form-control"
                         rows="3"
                         value={textAreaInput}
-                        onChange={(e) => 
+                        onChange={(e) =>
                             {
                             SetTextAreaInput(e.target.value);
                         }}
@@ -89,7 +89,7 @@ const FormDemoComponent = () =>
                             onChange={(e) =>
                             {
                                 SetCheckboxInput(e.target.checked);
-                            }} 
+                            }}
                         />
                     <label className="form-check-label" htmlFor="DemoCheckbox">Checkbox</label>
                 </div>
@@ -139,7 +139,7 @@ const FormDemoComponent = () =>
                                     SetRadioState(e);
                                 }}
                                 checked={radioGroupInput === "blue"}
-                                disabled 
+                                disabled
                             />
                         <label className="form-check-label" htmlFor="exampleRadios3">
                             Blue (disabled)
@@ -160,6 +160,6 @@ const FormDemoComponent = () =>
    );
 };
 
-export default FormDemoComponent;
+export default FormDemoApp;
 
 

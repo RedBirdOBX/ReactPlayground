@@ -37,6 +37,29 @@ const Overview = () =>
                         Uses <code>setInterval()</code> to update every second.
                     </td>
                     </tr>
+
+                    <tr>
+                    <th scope="row">Multi Button App</th>
+                    <td>
+                        Demostrates using <code>map()</code> to map an array to a list of components.  Each one having thr ability
+                        to update state in it's parent component.
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <th scope="row">Form Demo App</th>
+                    <td>
+                        Basic demonstration on how to use basic form elements and how to bind them to state objects.
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <th scope="row">Props Children Demo</th>
+                    <td>
+                        Demonstration of how we can read a prop value and can conditionally nullify (not show) the children of a component.
+                    </td>
+                    </tr>
+
                 </tbody>
             </table>
 
@@ -54,6 +77,13 @@ const Overview = () =>
                     <th scope="row">Tic Tac Toe App</th>
                     <td>
                         Follows tutorial from Reactjs.org. Nice example of using a history of moves.
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <th scope="row">Object Match Game</th>
+                    <td>
+                        A moderately complex design. Many components managing their own state.  Match the object to its parent.
                     </td>
                     </tr>
                 </tbody>
@@ -82,6 +112,21 @@ const Overview = () =>
                     <td>
                         Simple demo of validating the props data and types send into a component. The&nbsp;
                         <strong>Object Match Game</strong> does this well.
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <th scope="row">Event Example</th>
+                    <td>
+                        A demonstration on how every React function receives an event, usually known as <code>e</code> - even if it is not specified.
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <th scope="row">Used Numbers Concept</th>
+                    <td>
+                        This concept maintains a list of available numbers, a list of used numbers, and a list of all avaialable numbers.
+                        This exercise helped layout the logic in the Object Match Game.
                     </td>
                     </tr>
                 </tbody>

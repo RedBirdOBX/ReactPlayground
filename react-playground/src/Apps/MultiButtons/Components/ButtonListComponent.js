@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button';
+import ButtonComponent from './ButtonComponent';
 
 let _buttons = [];
 const _numOfButtons = 100;
@@ -10,12 +10,12 @@ for (let index = 1; index <= _numOfButtons; index++)
 }
 
 
-const ButtonList = (props) =>
+const ButtonListComponent = (props) =>
 {
     return (
     <div>
         {_buttons.map(btn =>
-            <Button
+            <ButtonComponent
                 BtnClickEvent={props.BtnClickHandler}
                 key={btn}
                 ButtonNumber={btn}
@@ -25,4 +25,4 @@ const ButtonList = (props) =>
 
 };
 
-export default ButtonList;
+export default ButtonListComponent;

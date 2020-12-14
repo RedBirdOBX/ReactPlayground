@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import UsedNumbersComponent from './Components/UsedNumbersComponent';
 
 
-const UsedNumbersAppContainer = (props) =>
+const UsedNumbersApp = (props) =>
 {
     const [appId, ResetAppId] = useState(1);
 
@@ -20,4 +20,4 @@ const UsedNumbersAppContainer = (props) =>
    );
 };
 
-export default UsedNumbersAppContainer;
+export default UsedNumbersApp;
