@@ -1,2 +1,0 @@
-To do:
-Make a basic nav to navigate between the sample apps.

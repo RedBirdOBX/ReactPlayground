@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import ChildComponent from './ChildComponent';
 
-// document this!!
-const StateExperimentComponent = (props) =>
+const StateDemoApp = (props) =>
 {
     let randomNumber = (Math.random() * 100).toFixed(0);
     const [randomNum, setRandomNum] = useState(randomNumber);
@@ -12,12 +11,13 @@ const StateExperimentComponent = (props) =>
     }
 
     console.log("Parent Component invoked.");
+
     return (
-        <div>
-            <h3>Parent Component</h3>
+        <div className="mt-3">
+            <h4 className="mb-5">State Experiment App</h4>
+            <h5>Parent Component</h5>
             <p>
                 Random number stored in AppLevel State: <span className="text-info"><strong>{randomNum}</strong></span>.
-
             </p>
             <p>
                 When this number which is stored in state changes, this <strong>and any child</strong> components
@@ -33,4 +33,4 @@ const StateExperimentComponent = (props) =>
    );
 };
 
-export default StateExperimentComponent;
+export default StateDemoApp;
