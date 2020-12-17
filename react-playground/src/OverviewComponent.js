@@ -173,6 +173,17 @@ const Overview = () =>
                     </td>
                     </tr>
 
+                    <tr>
+                    <th scope="row">
+                        <Link to="/StopWatchApp">
+                            StopWatch App
+                        </Link>
+                    </th>
+                    <td>
+                        Demo app using a Model-View-Intent design pattern.
+                    </td>
+                    </tr>
+
                 </tbody>
             </table>
 

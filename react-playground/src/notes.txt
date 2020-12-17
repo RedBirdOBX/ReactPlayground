@@ -1,0 +1,3 @@
+To do:
+***************
+Create a Stopwatch app as in demo using a MVI design pattern.

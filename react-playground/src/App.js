@@ -14,6 +14,7 @@ import MultiButtonsApp from './Apps/MultiButtons/MultiButtonsApp';
 import FormDemoApp from './Apps/FormDemo/FormDemoApp';
 import PropsChildrenExampleApp from './Apps/PropsChildrenExample/PropsChildrenExampleApp';
 import StateDemoApp from './Apps/StateDemo/StateDemoApp';
+import StopWatchApp from './Apps/StopWatch/StopWatchApp';
 
 // full apps
 import GitHubCardsApp from './Apps/GitHubCards/GitHubCardsApp';
@@ -99,6 +100,9 @@ function App()
                                 <Link className="dropdown-item" to="/StateDemoApp">
                                     State Demo App
                                 </Link>
+                                <Link className="dropdown-item" to="/StopWatchApp">
+                                    StopWatch App
+                                </Link>
                             </div>
                         </li>
                         <li className="nav-item dropdown">
@@ -139,6 +143,7 @@ function App()
             <Route exact path="/PropsChildrenExampleApp" component={PropsChildrenExampleApp} />
             <Route exact path="/StateDemoApp" component={StateDemoApp} />
             <Route exact path="/RoutingExampleApp" component={RoutingExampleApp} />
+            <Route exact path="/StopWatchApp" component={StopWatchApp} />
         </BrowserRouter>
     </div>
   );
