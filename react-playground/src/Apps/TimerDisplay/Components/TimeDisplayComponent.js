@@ -10,7 +10,21 @@ const TimeDisplayComponent = () =>
     const [currentTime, SetCurrentTime] = useState(new Date().toString());
     const delay = 1000;
 
-    useEffect(() => { setInterval(() => { SetCurrentTime(new Date().toString()); }, delay); });
+    useEffect(() =>
+    {
+        let timer = setInterval(() =>
+        {
+            SetCurrentTime(new Date().toString());
+            console.log(`the current time is ${new Date().toString()}`)
+        }, delay);
+
+        // executed if it has already rendered once
+        return () =>
+        {
+            clearInterval(timer);
+            console.log("component is going to rerender.")
+        };
+    });
 
     return (<h3 className="mt-5 text-info text-center">{currentTime}</h3>);
 };
