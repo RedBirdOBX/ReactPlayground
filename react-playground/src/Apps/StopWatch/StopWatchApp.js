@@ -1,66 +1,145 @@
 import React, {useState, useEffect} from 'react';
 
-// this is an object
-// let intents =
-// {
-//     TICK: "TICK",
-//     START: "START",
-//     STOP: "STOP",
-//     RESET: "RESET"
-// };
+// There's definitely room for improvement for this app.  The main idea to focus on and demonstrate is how we define all our actions,
+// aka "intents" in an object.  We instantiate this object with our 'intent', and return our object which has an "Actions" property.
+// Each action, Tick, Stop, Start, etc, has a function definition which will be executed as needed.
+// It's an interesting way to say "I want a particular object and a property...I'll tell you want the property is when I figure it out myself."
+
+// https://dsf-js-playground.azurewebsites.net/Javascript/Objects/Properties
+
+// This app loosely based on: https://app.pluralsight.com/course-player?clipId=ef2c7352-346c-4400-8422-611315ee254e
+
 
 const StopWatchApp = () =>
 {
-    const delay = 1000;
+    const _delay = 1000;
+    const _reset = "Reset";
+    const _start = "Start";
+    const _stop = "Stop";
+    const _tick = "Tick";
     const [model, UpdateModel] = useState(
     {
-        IsRunning: true,
-        SecondsLapsed: 0
+        IsRunning: false,
+        SecondsLapsed: 0,
+        Minutes: 0,
+        SecondsLeft: 0,
+        SecondsFormatted: "00",
+        TimeFormatted: "0:00"
     });
 
-    // can these part of the model too?
-    let minutes = Math.floor(model.SecondsLapsed / 60);
-    let secondsLeft = model.SecondsLapsed - (minutes * 60);
-    let secondsFormatted = `${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
-
-
-    const UpdateSeconds = (model, intent) =>
+    const Intents = (model, action) =>
     {
-        const updates =
+        const Actions =
         {
-            'TICK': () =>
+            "Tick": () =>
                         {
-                            UpdateModel(
-                                {
-                                    IsRunning: true,
-                                    SecondsLapsed: model.SecondsLapsed + 1
-                                });
-                        }
+                            if (model.IsRunning)
+                            {
+                                UpdateModel(
+                                    {
+                                        IsRunning: true,
+                                        SecondsLapsed: model.SecondsLapsed + 1,
+                                        Minutes: Math.floor(model.SecondsLapsed / 60),
+                                        SecondsLeft: model.SecondsLapsed - (model.Minutes * 60),
+                                        SecondsFormatted: `${model.SecondsLeft < 10 ? '0' : ''}${model.SecondsLeft}`,
+                                        TimeFormatted: `${model.Minutes}:${model.SecondsFormatted}`
+                                    });
+                                }
+                            },
+
+            "Reset" : () =>
+            {
+                UpdateModel(
+                    {
+                        IsRunning: true,
+                        SecondsLapsed: 0,
+                        Minutes: 0,
+                        SecondsLeft: 0,
+                        SecondsFormatted: "00",
+                        TimeFormatted: "0:00"
+                    });
+            },
+
+            "Stop" : () =>
+            {
+                UpdateModel(
+                    {
+                        IsRunning: false,
+                        SecondsLapsed: model.SecondsLapsed,
+                        Minutes: Math.floor(model.SecondsLapsed / 60),
+                        SecondsLeft: model.SecondsLapsed - (model.Minutes * 60),
+                        SecondsFormatted: `${model.SecondsLeft < 10 ? '0' : ''}${model.SecondsLeft}`,
+                        TimeFormatted: `${model.Minutes}:${model.SecondsFormatted}`
+                    });
+            },
+
+            "Start" : () =>
+            {
+                UpdateModel(
+                    {
+                        IsRunning: true,
+                        SecondsLapsed: model.SecondsLapsed,
+                        Minutes: Math.floor(model.SecondsLapsed / 60),
+                        SecondsLeft: model.SecondsLapsed - (model.Minutes * 60),
+                        SecondsFormatted: `${model.SecondsLeft < 10 ? '0' : ''}${model.SecondsLeft}`,
+                        TimeFormatted: `${model.Minutes}:${model.SecondsFormatted}`
+                    });
+
+                    console.log(`START triggered at ${new Date().toLocaleTimeString()}`);
+            }
+
         };
 
-        return updates[intent](model);
+        return Actions[action](model);
+    };
+
+    let ActionHandler = () =>
+    {
+        if (model.IsRunning)
+        {
+            Intents(model, _stop);
+        }
+        else
+        {
+            Intents(model, _start);
+        }
+
     };
 
     // will fire once component is rendered
     useEffect(() =>
     {
-        let timer = setInterval(() =>
+        if (model.IsRunning)
         {
-            UpdateSeconds(model, 'TICK');
-        }, delay);
+            let timer = setInterval(() =>
+            {
+                console.log(`Timer started at ${new Date().toLocaleTimeString()}`);
+                Intents(model, _tick);
+            }, _delay);
 
-        return() =>
-        {
-            // this is needed
-            clearInterval(timer);
-        };
+            return() =>
+            {
+                // this is needed
+                clearInterval(timer);
+            };
+
+        }
     });
 
    return (
        <div className="mt-3">
             <h4>StopWatch App</h4>
-            <div>Running: {model.IsRunning.toString()}</div>
-            <h4>Time: {minutes}:{secondsFormatted}</h4>
+            <h4>{model.TimeFormatted}</h4>
+            <button className="btn btn-danger mx-1"
+                id="ResetButton"
+                onClick={() => {Intents(model, _reset)}}>
+                {_reset}
+            </button>
+            <button className="btn btn-primary mx-1"
+                id="ActionButton"
+                onClick={ActionHandler}>
+                { model.IsRunning ? _stop : _start}
+            </button>
         </div>
    );
 };
