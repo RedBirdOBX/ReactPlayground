@@ -8,6 +8,7 @@ import './App.css';
 // demos
 import ColorSelectorDemoClassesApp from './Apps/ColorSelectorDemoClasses/ColorSelectorDemoClassesApp';
 import ColorSelectorDemoFunctionsApp from './Apps/ColorSelectorDemoFunctions/ColorSelectorDemoFunctionsApp';
+import ConditionalRenderingApp from './Apps/ConditionalRendering/ConditionalRenderingApp';
 import CounterButtonApp from './Apps/CounterButton/CounterButtonApp';
 import TimerDisplayApp from './Apps/TimerDisplay/TimerDisplayApp';
 import MultiButtonsApp from './Apps/MultiButtons/MultiButtonsApp';
@@ -15,6 +16,7 @@ import FormDemoApp from './Apps/FormDemo/FormDemoApp';
 import PropsChildrenExampleApp from './Apps/PropsChildrenExample/PropsChildrenExampleApp';
 import StateDemoApp from './Apps/StateDemo/StateDemoApp';
 import StopWatchApp from './Apps/StopWatch/StopWatchApp';
+
 
 // full apps
 import GitHubCardsApp from './Apps/GitHubCards/GitHubCardsApp';
@@ -68,6 +70,9 @@ function App()
                                 </Link>
                                 <Link className="dropdown-item" to="/RoutingExampleApp">
                                     Routing Example App
+                                </Link>
+                                <Link className="dropdown-item" to="/ConditionalRenderingApp">
+                                    Conditional Rendering App
                                 </Link>
                             </div>
                         </li>
@@ -144,6 +149,7 @@ function App()
             <Route exact path="/StateDemoApp" component={StateDemoApp} />
             <Route exact path="/RoutingExampleApp" component={RoutingExampleApp} />
             <Route exact path="/StopWatchApp" component={StopWatchApp} />
+            <Route exact path="/ConditionalRendering" component={ConditionalRenderingApp} />
         </BrowserRouter>
     </div>
   );

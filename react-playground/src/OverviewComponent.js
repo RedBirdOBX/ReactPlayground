@@ -76,6 +76,16 @@ const Overview = () =>
                         Concept using <code>react-router-dom</code>.  Uses <code>BrowserRouter</code> and <code>Link</code>.
                     </td>
                     </tr>
+                    <tr>
+                    <th scope="row">
+                        <Link to="/ConditionalRendering">
+                            Conditional Rendering
+                        </Link>
+                    </th>
+                    <td>
+                        Simple demo on how to conditionally render a component.
+                    </td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -157,7 +167,8 @@ const Overview = () =>
                         </Link>
                     </th>
                     <td>
-                        Demonstration of how we can read a prop value and can conditionally nullify (not show) the children of a component.
+                        Demonstration of how we can read a prop value and can <strong>conditionally
+                        nullify (not show)</strong> the children of a component.
                     </td>
                     </tr>
 
