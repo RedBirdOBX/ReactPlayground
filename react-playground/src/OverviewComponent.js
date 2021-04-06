@@ -86,6 +86,16 @@ const Overview = () =>
                         Simple demo on how to conditionally render a component.
                     </td>
                     </tr>
+                    <tr>
+                    <th scope="row">
+                        <Link to="/PassingProps">
+                            Passing Props
+                        </Link>
+                    </th>
+                    <td>
+                        As simple as it gets.
+                    </td>
+                    </tr>
                 </tbody>
             </table>
 

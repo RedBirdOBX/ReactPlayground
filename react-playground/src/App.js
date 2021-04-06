@@ -30,6 +30,7 @@ import PropsValidationApp from './Apps/PropsValidation/PropsValidationApp';
 import EventExampleApp from './Apps/EventExample/EventExampleApp';
 import UsedNumbersApp from './Apps/UsedNumberApp/UsedNumbersApp';
 import RoutingExampleApp from './Apps/RoutingExample/RoutingExampleApp';
+import PassingPropsApp from './Apps/PassingProps/PassingPropsApp';
 
 import Overview from './OverviewComponent';
 
@@ -73,6 +74,9 @@ function App()
                                 </Link>
                                 <Link className="dropdown-item" to="/ConditionalRenderingApp">
                                     Conditional Rendering App
+                                </Link>
+                                <Link className="dropdown-item" to="/PassingPropsApp">
+                                    Passing Props
                                 </Link>
                             </div>
                         </li>
@@ -150,6 +154,7 @@ function App()
             <Route exact path="/RoutingExampleApp" component={RoutingExampleApp} />
             <Route exact path="/StopWatchApp" component={StopWatchApp} />
             <Route exact path="/ConditionalRendering" component={ConditionalRenderingApp} />
+            <Route exact path="/PassingProps" component={PassingPropsApp} />
         </BrowserRouter>
     </div>
   );
